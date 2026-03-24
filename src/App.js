@@ -8,40 +8,41 @@ function VideoBackground({ heroRef, aboutRef }) {
   const [showHeroVideo, setShowHeroVideo] = useState(true);
 
   useEffect(() => {
+    const heroNode = heroRef.current;
+    const aboutNode = aboutRef.current;
+
     const observerOptionsHero = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.6, // Trigger when 50% of HeroSection is out of view
+      threshold: 0.6,
     };
 
     const observerOptionsAbout = {
       root: null,
-      rootMargin: '-50% 0px -50% 0px', // Delay trigger until AboutSection is more in view
+      rootMargin: '-50% 0px -50% 0px',
       threshold: 0.1,
     };
 
     const heroObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        console.log('HeroSection visibility:', entry.isIntersecting);
         setShowHeroVideo(entry.isIntersecting);
       });
     }, observerOptionsHero);
 
     const aboutObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        console.log('AboutSection visibility:', entry.isIntersecting);
         if (entry.isIntersecting) {
           setShowHeroVideo(false);
         }
       });
     }, observerOptionsAbout);
 
-    if (heroRef.current) heroObserver.observe(heroRef.current);
-    if (aboutRef.current) aboutObserver.observe(aboutRef.current);
+    if (heroNode) heroObserver.observe(heroNode);
+    if (aboutNode) aboutObserver.observe(aboutNode);
 
     return () => {
-      if (heroRef.current) heroObserver.unobserve(heroRef.current);
-      if (aboutRef.current) aboutObserver.unobserve(aboutRef.current);
+      if (heroNode) heroObserver.unobserve(heroNode);
+      if (aboutNode) aboutObserver.unobserve(aboutNode);
     };
   }, [heroRef, aboutRef]);
 
