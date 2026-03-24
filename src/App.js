@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css'; // Optional: Include if you have component-specific styles
 import { Menu, X, Github, Linkedin, Mail, ChevronDown, Download, ExternalLink, Phone } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+
 
 // Video Background Component
 function VideoBackground({ heroRef, aboutRef }) {
@@ -1072,26 +1072,31 @@ function ContactSection() {
 
     setIsSubmitting(true);
 
-    // EmailJS send email
-    emailjs.send(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-      {
+    fetch('https://formsubmit.co/ajax/amirejaz790@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
         name: formState.name,
         email: formState.email,
-        subject: formState.subject || 'No Subject',
+        subject: formState.subject || 'Portfolio Contact',
         message: formState.message,
-      },
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-    )
-      .then((response) => {
-        console.log('Email sent successfully:', response.status, response.text);
-        alert('Message sent successfully!');
-        setFormState({ name: '', email: '', subject: '', message: '' });
-        setErrors({});
+        _subject: `Portfolio Contact: ${formState.subject || 'New Message'}`,
       })
-      .catch((err) => {
-        console.error('Failed to send email:', err);
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert('Message sent successfully!');
+          setFormState({ name: '', email: '', subject: '', message: '' });
+          setErrors({});
+        } else {
+          alert('Failed to send message. Please try again later.');
+        }
+      })
+      .catch(() => {
         alert('Failed to send message. Please try again later.');
       })
       .finally(() => {
