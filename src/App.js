@@ -691,63 +691,71 @@ function ProjectsSection() {
         )}
 
         {selectedProject && (
-          <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={() => setSelectedProject(null)}>
-            <div className="bg-gray-800 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-2xl font-bold">{selectedProject.title}</h3>
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fadeIn" onClick={() => setSelectedProject(null)}>
+            <div className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-2xl rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-purple-500/20 shadow-2xl shadow-purple-500/10" onClick={(e) => e.stopPropagation()}>
+              {/* Decorative gradient orbs */}
+              <div className="absolute top-0 left-0 w-40 h-40 bg-purple-600/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+              <div className="absolute bottom-0 right-0 w-40 h-40 bg-pink-600/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
+              <div className="p-8 relative z-10">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">{selectedProject.title}</h3>
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="p-2 rounded-lg text-gray-400 hover:text-white transition-all duration-300 hover:bg-gradient-to-r hover:from-red-600/20 hover:to-red-500/20 hover:scale-110 border border-transparent hover:border-red-500/30"
+                    className="p-2 rounded-xl text-gray-400 hover:text-white transition-all duration-300 hover:bg-white/10 hover:scale-110 border border-transparent hover:border-white/20"
                     aria-label="Close modal"
                   >
                     <X size={24} />
                   </button>
                 </div>
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full rounded-lg mb-6 h-64 object-cover"
-                />
-                <p className="text-gray-300 mb-6">{selectedProject.description}</p>
+                <div className="relative rounded-xl overflow-hidden mb-6">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
+                </div>
+                <p className="text-gray-300 mb-6 leading-relaxed">{selectedProject.description}</p>
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-2">Technologies Used:</h4>
+                  <h4 className="font-semibold mb-3 text-white">Technologies Used:</h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map(tech => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-purple-600 bg-opacity-20 border border-purple-500 rounded-full text-sm"
+                        className="px-4 py-1.5 bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 rounded-full text-sm text-purple-200 backdrop-blur-sm"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
-                {selectedProject.github && (
-                  <a
-                    href={selectedProject.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-400 hover:text-purple-300 font-medium mb-4 block"
-                  >
-                    View Code on GitHub
-                  </a>
-                )}
-                {selectedProject.liveDemo && (
-                  <a
-                    href={selectedProject.liveDemo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 hover:text-cyan-300 font-medium mb-4 block flex items-center gap-2"
-                  >
-                    <ExternalLink size={18} />
-                    View Live Demo
-                  </a>
-                )}
-                <div className="flex justify-end">
+                <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
+                  {selectedProject.github && (
+                    <a
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-400/40 rounded-xl text-purple-300 hover:text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/10"
+                    >
+                      <Github size={18} />
+                      View Code
+                    </a>
+                  )}
+                  {selectedProject.liveDemo && (
+                    <a
+                      href={selectedProject.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600/30 to-pink-600/30 hover:from-purple-600/50 hover:to-pink-600/50 border border-purple-500/30 hover:border-purple-400/50 rounded-xl text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
+                    >
+                      <ExternalLink size={18} />
+                      Live Demo
+                    </a>
+                  )}
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    className="ml-auto px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl font-medium text-gray-300 hover:text-white transition-all duration-300 hover:scale-105"
                   >
                     Close
                   </button>
