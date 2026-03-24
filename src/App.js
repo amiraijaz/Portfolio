@@ -1049,6 +1049,12 @@ function ContactSection() {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState(null); // { type: 'success' | 'error', message: string }
+
+  const showToast = (type, message) => {
+    setToast({ type, message });
+    setTimeout(() => setToast(null), 4000);
+  };
 
   const validate = () => {
     const newErrors = {};
@@ -1089,15 +1095,15 @@ function ContactSection() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          alert('Message sent successfully!');
+          showToast('success', 'Message sent successfully! I\'ll get back to you soon.');
           setFormState({ name: '', email: '', subject: '', message: '' });
           setErrors({});
         } else {
-          alert('Failed to send message. Please try again later.');
+          showToast('error', 'Failed to send message. Please try again later.');
         }
       })
       .catch(() => {
-        alert('Failed to send message. Please try again later.');
+        showToast('error', 'Failed to send message. Please try again later.');
       })
       .finally(() => {
         setIsSubmitting(false);
@@ -1106,6 +1112,43 @@ function ContactSection() {
 
   return (
     <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-black/10 backdrop-blur-sm relative overflow-hidden">
+      {/* Toast Notification */}
+      {toast && (
+        <div className="fixed top-6 right-6 z-[100] animate-slideDown">
+          <div className={`relative flex items-center gap-3 px-6 py-4 rounded-2xl border backdrop-blur-2xl shadow-2xl min-w-[320px] max-w-[420px] ${
+            toast.type === 'success'
+              ? 'bg-gradient-to-r from-green-900/90 to-emerald-900/90 border-green-500/30 shadow-green-500/20'
+              : 'bg-gradient-to-r from-red-900/90 to-rose-900/90 border-red-500/30 shadow-red-500/20'
+          }`}>
+            <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
+              toast.type === 'success'
+                ? 'bg-green-500/20 text-green-400'
+                : 'bg-red-500/20 text-red-400'
+            }`}>
+              {toast.type === 'success' ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              )}
+            </div>
+            <div className="flex-1">
+              <p className={`font-semibold text-sm ${toast.type === 'success' ? 'text-green-300' : 'text-red-300'}`}>
+                {toast.type === 'success' ? 'Success!' : 'Error'}
+              </p>
+              <p className="text-gray-300 text-sm mt-0.5">{toast.message}</p>
+            </div>
+            <button onClick={() => setToast(null)} className="flex-shrink-0 text-gray-400 hover:text-white transition-colors p-1">
+              <X size={16} />
+            </button>
+            {/* Progress bar */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl overflow-hidden">
+              <div className={`h-full rounded-b-2xl ${toast.type === 'success' ? 'bg-green-500/60' : 'bg-red-500/60'}`}
+                style={{ animation: 'shrinkWidth 4s linear forwards' }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-500/5 to-gray-400/5"></div>
       <div className="absolute top-0 left-0 w-full h-full">
