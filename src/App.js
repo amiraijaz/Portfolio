@@ -408,7 +408,7 @@ function AboutSection() {
             <div className="relative group">
               <div className="w-72 h-72 rounded-full bg-white/5 border-2 border-white/20 flex items-center justify-center overflow-hidden shadow-2xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105">
                 <img
-                  src="/images/profile.jpeg"
+                  src="/images/profile.jpg"
                   alt="Profile"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
@@ -692,7 +692,7 @@ function ProjectsSection() {
 
         {selectedProject && (
           <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fadeIn" onClick={() => setSelectedProject(null)}>
-            <div className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-2xl rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-purple-500/20 shadow-2xl shadow-purple-500/10" onClick={(e) => e.stopPropagation()}>
+            <div className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-2xl rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide border border-purple-500/20 shadow-2xl shadow-purple-500/10" onClick={(e) => e.stopPropagation()}>
               {/* Decorative gradient orbs */}
               <div className="absolute top-0 left-0 w-40 h-40 bg-purple-600/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
               <div className="absolute bottom-0 right-0 w-40 h-40 bg-pink-600/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
