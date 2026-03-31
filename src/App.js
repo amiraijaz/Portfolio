@@ -772,9 +772,9 @@ function ProjectsSection() {
 const ExperienceSection = () => {
   const experiences = [
     {
-      company: "Viraltech",
+      company: "Viral Tech",
       position: "AI Engineer",
-      period: "01-Sept-2025 - Present",
+      period: "01-August-2025 - Present",
       description: [
         "Designed architecture and implemented an e-commerce chatbot with cost-optimized infrastructure.",
         "Conducted research on new LLMs, analyzing capabilities and inference cost metrics.",
@@ -785,9 +785,9 @@ const ExperienceSection = () => {
       ]
     },
     {
-      company: "SavTech Digital",
+      company: "TechThrone Innovations Pvt. Ltd.",
       position: "AI Engineer",
-      period: "01-May-2025 - 31-August-2025",
+      period: "01-May-2025 - 31-July-2025",
       description: [
         "Built a local LLM, similar to ChatGPT, for content and social media management.",
         "Developed AI tools including text-to-image generation, HR screening automation, and lead-generating agents.",
