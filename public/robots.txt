@@ -1,0 +1,32 @@
+# https://www.robotstxt.org/robotstxt.html
+
+# Allow all crawlers, including AI assistants
+User-agent: *
+Allow: /
+
+# AI / LLM crawlers (explicitly allowed)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://portfolio-amiraijaz.vercel.app/sitemap.xml
