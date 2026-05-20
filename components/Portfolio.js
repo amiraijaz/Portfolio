@@ -1,5 +1,6 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
-import './App.css'; // Optional: Include if you have component-specific styles
 import { Menu, X, Github, Linkedin, Mail, ChevronDown, Download, ExternalLink, Phone } from 'lucide-react';
 
 

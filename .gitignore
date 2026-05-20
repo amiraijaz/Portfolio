@@ -1,5 +1,9 @@
 node_modules/
 build/
+.next/
+out/
 .claude/
 .env
+.env*.local
 .DS_Store
+next-env.d.ts
