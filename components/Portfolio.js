@@ -426,8 +426,8 @@ function AboutSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
               <a
-                href="/resume/Amir%20Aijaz%20-%20AI%20(CV).pdf"
-                download="Amir Aijaz - AI (CV).pdf"
+                href="/resume/CV%20-%20Amir%20Aijaz.pdf"
+                download="CV - Amir Aijaz.pdf"
                 className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium text-white flex items-center justify-center transition-transform transform hover:scale-105"
               >
                 <Download size={18} className="mr-2" />

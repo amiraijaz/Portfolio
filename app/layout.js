@@ -138,6 +138,6 @@ const noscriptFallback = `
       <li><strong>Fog Removal for Autonomous Vehicles</strong> &mdash; Dehazing and object detection for foggy driving conditions. (YOLOv8, OpenCV, Streamlit)</li>
       <li><strong>Instagram Agent</strong> &mdash; CrewAI automation for Instagram content research and creation. (CrewAI, LangChain, Python)</li>
     </ul>
-    <p><a href="/resume/Amir%20Aijaz%20-%20AI%20(CV).pdf">Download Amir Aijaz's AI Engineer resume (PDF)</a></p>
+    <p><a href="/resume/CV%20-%20Amir%20Aijaz.pdf">Download Amir Aijaz's AI Engineer resume (PDF)</a></p>
   </section>
 `;
