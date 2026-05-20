@@ -818,10 +818,12 @@ const ExperienceSection = () => {
     {
       company: "Smart City Lab (NCAI)",
       position: "Artificial Intelligence & NLP",
-      period: "15-December-2023 - 31-May-2024",
+      period: "05-December-2023 - 30-May-2024",
       description: [
-        "Built an NLP driven Arabic Medical chatbot.",
-        "Benchmarked speech models (Whisper, Wav2Vec) to evaluate transcription accuracy for Urdu."
+        "Developed an Arabic language voice assistant for Sahl AI, including dataset preparation, model fine-tuning, and integration.",
+        "Performed data gathering, cleaning, and preprocessing for ADAS projects to ensure high-quality annotated datasets.",
+        "Conducted comparative analysis of wav2vec and Google Speech models for Urdu speech-to-text transcription using Hugging Face.",
+        "Worked with transformer-based deep learning models using PyTorch, Hugging Face, and various data processing libraries."
       ]
     }
   ];
