@@ -1,0 +1,20 @@
+# Netlify / Cloudflare Pages cache rules.
+# HTML: always revalidate so content updates show immediately.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Stable assets: cache hard for 30 days.
+/assets/*
+  Cache-Control: public, max-age=2592000
+/docs/*
+  Cache-Control: public, max-age=2592000
+/og-image.png
+  Cache-Control: public, max-age=2592000
+/favicon.svg
+  Cache-Control: public, max-age=2592000
+
+# Project images may be added/updated more often: 7 days.
+/images/*
+  Cache-Control: public, max-age=604800

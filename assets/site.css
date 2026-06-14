@@ -1,0 +1,53 @@
+/* Shared site chrome: floating nav + footer.
+   Design tokens (--bg, --accent, etc.) are defined inline per page. */
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed; top:16px; left:50%; transform:translateX(-50%); z-index:100;
+  display:flex; align-items:center; gap:clamp(18px,3.5vw,40px);
+  padding:10px 12px 10px 24px; border-radius:999px;
+  border:1px solid transparent; background:transparent;
+  -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); white-space:nowrap;
+  transition:background .45s, border-color .45s, box-shadow .45s, top .45s;
+}
+nav.scrolled{
+  top:10px; background:color-mix(in oklab, var(--panel) 82%, transparent);
+  border-color:var(--line); box-shadow:0 14px 44px -14px rgb(0 0 0 / .65);
+}
+nav .logo{ font-weight:700; font-size:17px; letter-spacing:.04em; text-decoration:none;
+  color:var(--text); display:flex; align-items:center; gap:10px; }
+nav .logo i, .sf-brand .logo i{ width:10px; height:10px; border-radius:50%; background:var(--accent);
+  display:inline-block; box-shadow:0 0 14px var(--accent); }
+nav .logo i{ animation:navpulse 2s infinite; }
+@keyframes navpulse{ 0%,100%{ box-shadow:0 0 0 0 color-mix(in oklab, var(--accent) 60%, transparent);} 60%{ box-shadow:0 0 0 9px transparent;} }
+.nav-links{ display:flex; gap:clamp(12px,2.2vw,26px); align-items:center; }
+.nav-links a{ color:var(--muted); text-decoration:none; font-size:14.5px; font-weight:500; transition:color .2s; }
+.nav-links a:not(.navbtn){ position:relative; padding:6px 1px; }
+.nav-links a:not(.navbtn)::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:2px; border-radius:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transform:scaleX(0); transform-origin:left; transition:transform .32s cubic-bezier(.2,.7,.2,1); }
+.nav-links a:not(.navbtn):hover::after, .nav-links a.active:not(.navbtn)::after{ transform:scaleX(1); }
+.nav-links a:hover, .nav-links a.active{ color:var(--text); }
+
+/* shared button (own class so it never clashes with per-page .btn) */
+.navbtn{ display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:999px;
+  border:1px solid var(--line); background:var(--panel); color:var(--text); text-decoration:none;
+  font-weight:600; font-size:15px; transition:border-color .25s, box-shadow .25s, transform .15s; }
+.navbtn:hover{ border-color:var(--accent); transform:translateY(-1px); }
+.navbtn.primary{ background:var(--accent); color:#14110a; border-color:transparent; }
+.navbtn.primary:hover{ box-shadow:0 6px 32px color-mix(in oklab, var(--accent) 45%, transparent); }
+.nav-cta{ padding:9px 20px; font-size:14px; }
+@media (max-width:760px){ .nav-links a:not(.navbtn){ display:none; } }
+
+/* ---------- footer ---------- */
+.site-footer{ border-top:1px solid var(--line); background:var(--bg2,#04070c); margin-top:90px; }
+.sf-wrap{ max-width:1180px; margin:0 auto; padding:clamp(48px,7vw,76px) clamp(20px,5vw,64px) 36px; }
+.sf-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:34px; flex-wrap:wrap; margin-bottom:54px; }
+.sf-brand .logo{ font-weight:700; font-size:18px; letter-spacing:.04em; text-decoration:none;
+  color:var(--text); display:inline-flex; align-items:center; gap:10px; }
+.sf-tag{ color:var(--muted); font-size:15px; max-width:340px; margin-top:14px; }
+.sf-links{ display:flex; gap:12px; flex-wrap:wrap; }
+.foot-meta{ display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; padding-top:26px;
+  border-top:1px solid var(--line); color:var(--muted); font-size:13px; font-family:"JetBrains Mono",monospace; }
+.foot-meta a{ color:var(--muted); text-decoration:none; }
+.foot-meta a:hover{ color:var(--text); }

@@ -1,0 +1,28 @@
+# Amir Aijaz — AI Engineer
+
+> Full-stack AI engineer with 2+ years building and shipping production AI systems end to end, from model to deployed product. Specializes in LLM applications, retrieval-augmented generation (RAG), multi-agent and voice AI systems, computer vision, and AI governance. Based in Karachi, Pakistan; available for remote work worldwide.
+
+## About
+- Name: Amir Aijaz
+- Title: AI Engineer
+- Current role: AI Engineer at Viral Tech (Norway, remote), since August 2025
+- Education: BSc Computer Science, University of Karachi (2021–2024)
+- Core skills: LLMs, RAG, LangChain/LangGraph, multi-agent systems, Model Context Protocol (MCP), Vapi voice agents, PyTorch, Hugging Face, YOLOv8, computer vision, FastAPI, React/Next.js, PostgreSQL, Redis, Docker, AWS, multi-tenant architecture, test-driven development
+- Contact: amirejaz790@gmail.com
+
+## Selected work
+- Vigil — open-source AI governance and LLM observability platform: model registry with risk classification, audit logging, automated PII and toxicity detection, cost tracking across 250+ models, and one-click NIST AI RMF compliance reports. Built with FastAPI, React, PostgreSQL, Redis, Docker.
+- aigovkit — published Python SDK for AI governance and LLM observability (PyPI).
+- governance-bench-v1 — 200-case benchmark dataset for evaluating AI governance scanners (Hugging Face, CC-BY-4.0).
+- AI Voice Lead-Generation System — production outbound/inbound voice agent (Vapi + Deepgram + GPT-4o-mini + Cartesia), multi-tenant, TCPA-compliant, backed by 586 hermetic tests, engineered for high call volume at low per-call cost.
+- Legal Mind AI — RAG assistant that answers natural-language questions over large legal PDFs with cited sources (LangChain, ChromaDB; Gemini/OpenAI/Ollama backends).
+- SignVision — real-time Urdu sign-language translator using MediaPipe Holistic keypoints and a CNN-LSTM model.
+- Quant Strategy Validation Engine — offline backtesting harness with no-look-ahead enforcement, realistic fee/slippage modeling, and out-of-sample validation.
+
+## Links
+- Portfolio: https://amiraijaz.com/
+- Projects: https://amiraijaz.com/projects.html
+- GitHub: https://github.com/amiraijaz
+- LinkedIn: https://www.linkedin.com/in/amir-aijaz-01a134233
+- PyPI (aigovkit): https://pypi.org/project/aigovkit/
+- Hugging Face: https://huggingface.co/Vigil-ai

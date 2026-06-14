@@ -1,0 +1,3 @@
+# Never deploy local drafts / source originals.
+_archive/
+.gitignore
