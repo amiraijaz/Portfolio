@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vigil — AI Governance Dashboard · Case Study | Amir Aijaz</title>
+<meta name="description" content="Case study: Vigil, an open-source, self-hostable LLM governance and observability platform by Amir Aijaz. Model registry, safety scanning (PII, toxicity, prompt-injection), cost tracking across 249 models, NIST AI RMF compliance reports, and the aigovkit Python SDK.">
+<meta name="author" content="Amir Aijaz">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#06090f">
+<link rel="canonical" href="https://amiraijaz.com/projects/vigil.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Amir Aijaz">
+<meta property="og:title" content="Vigil — AI Governance Dashboard · Case Study">
+<meta property="og:description" content="Open-source LLM governance platform: model registry, safety scanning, cost tracking across 249 models, NIST AI RMF compliance, and the aigovkit Python SDK.">
+<meta property="og:url" content="https://amiraijaz.com/projects/vigil.html">
+<meta property="og:image" content="https://amiraijaz.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vigil — AI Governance Dashboard · Case Study">
+<meta name="twitter:description" content="Open-source LLM governance: safety scanning, cost tracking across 249 models, NIST AI RMF compliance, and the aigovkit Python SDK.">
+<meta name="twitter:image" content="https://amiraijaz.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Vigil — AI Governance Dashboard",
+  "description": "Open-source, self-hostable LLM governance and observability platform: model registry with risk classification, audit logging, safety scanning (PII, toxicity, prompt-injection), cost tracking across 249 models, human review queue, and one-click NIST AI RMF compliance reports. Ships the aigovkit Python SDK.",
+  "url": "https://amiraijaz.com/projects/vigil.html",
+  "codeRepository": "https://github.com/amiraijaz/ai-governance-dashboard",
+  "programmingLanguage": ["Python", "TypeScript"],
+  "license": "https://opensource.org/licenses/MIT",
+  "author": { "@type": "Person", "name": "Amir Aijaz", "url": "https://amiraijaz.com/" },
+  "keywords": "AI governance, LLM observability, NIST AI RMF, PII detection, FastAPI, React, PostgreSQL, aigovkit"
+}
+</script>
+<style>
+  :root{
+    --bg:#06090f; --bg2:#04070c; --panel:oklch(0.17 0.02 265);
+    --line:oklch(0.30 0.02 265 / 0.55); --text:oklch(0.95 0.005 80);
+    --muted:oklch(0.68 0.02 265); --accent:#a3e635; --accent2:#34d399; --radius:16px;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--text); font-family:"Space Grotesk",sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  ::selection{ background:var(--accent); color:#14110a; }
+  .mono{ font-family:"JetBrains Mono",monospace; }
+  a{ color:inherit; }
+  .wrap{ max-width:960px; margin:0 auto; padding:0 clamp(20px,5vw,40px); }
+  .topbar{ position:sticky; top:0; z-index:20; backdrop-filter:blur(10px);
+    background:color-mix(in oklab, var(--bg) 80%, transparent); border-bottom:1px solid var(--line); }
+  .topbar .wrap{ display:flex; align-items:center; justify-content:space-between; height:58px; }
+  .back{ display:inline-flex; align-items:center; gap:8px; font-family:"JetBrains Mono",monospace;
+    font-size:13px; color:var(--muted); text-decoration:none; transition:color .2s; }
+  .back:hover{ color:var(--accent); }
+  .topbar .links{ display:flex; gap:18px; font-size:13.5px; }
+  .topbar .links a{ color:var(--muted); text-decoration:none; transition:color .2s; }
+  .topbar .links a:hover{ color:var(--text); }
+
+  section{ padding:clamp(48px,7vw,80px) 0; }
+  .eyebrow{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--accent); }
+  h1{ font-size:clamp(44px,8vw,86px); font-weight:700; letter-spacing:-.03em; line-height:1; margin:18px 0 6px; }
+  .sub{ font-size:clamp(20px,3vw,28px); font-weight:500; color:var(--muted); letter-spacing:-.01em; }
+  .lead{ font-size:clamp(17px,2vw,20px); color:var(--muted); max-width:680px; margin-top:24px; }
+  .lead b{ color:var(--text); font-weight:600; }
+  h2{ font-size:clamp(26px,3.4vw,38px); font-weight:700; letter-spacing:-.02em; margin-bottom:8px; }
+  h2 .n{ font-family:"JetBrains Mono",monospace; font-size:14px; color:var(--accent); margin-right:14px; vertical-align:middle; }
+  .section-intro{ color:var(--muted); max-width:680px; margin-bottom:34px; font-size:17px; }
+  p{ color:var(--muted); }
+  p b{ color:var(--text); font-weight:600; }
+
+  .ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-top:34px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px;
+    font-weight:600; font-size:15px; text-decoration:none; border:1px solid var(--line);
+    color:var(--text); background:transparent; transition:.25s; }
+  .btn:hover{ border-color:var(--accent); transform:translateY(-2px); }
+  .btn.primary{ background:var(--accent); color:#14110a; border-color:transparent; }
+  .btn.primary:hover{ box-shadow:0 8px 30px color-mix(in oklab, var(--accent) 45%, transparent); }
+
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
+    border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:48px; }
+  .stat{ background:color-mix(in oklab, var(--bg) 82%, transparent); padding:22px 22px; }
+  .stat b{ display:block; font-size:26px; font-weight:700; letter-spacing:-.02em; color:var(--text); }
+  .stat span{ font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--muted); letter-spacing:.03em; }
+  @media (max-width:680px){ .stats{ grid-template-columns:1fr 1fr; } }
+
+  .hero-shot{ margin:8px auto 0; border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,.5); }
+  .hero-shot img{ width:100%; display:block; }
+
+  .divider{ height:1px; background:var(--line); }
+
+  .features{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media (max-width:680px){ .features{ grid-template-columns:1fr; } }
+  .feature{ border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:24px; }
+  .feature .fi{ width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    background:color-mix(in oklab, var(--accent) 14%, transparent); color:var(--accent); margin-bottom:14px; }
+  .feature .fi svg{ width:20px; height:20px; }
+  .feature h3{ font-size:18px; font-weight:600; margin-bottom:6px; }
+  .feature p{ font-size:14.5px; }
+
+  .code{ background:#03060d; border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:8px 0; }
+  .code .bar{ display:flex; gap:7px; align-items:center; padding:11px 15px; border-bottom:1px solid var(--line); }
+  .code .bar i{ width:10px; height:10px; border-radius:50%; }
+  .code .bar i:nth-child(1){ background:#fb4d6d; } .code .bar i:nth-child(2){ background:#f5a524; } .code .bar i:nth-child(3){ background:#34d399; }
+  .code .bar span{ margin-left:8px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--muted); }
+  .code pre{ margin:0; padding:18px 18px; overflow-x:auto; }
+  .code code{ font-family:"JetBrains Mono",monospace; font-size:13px; line-height:1.75; color:#cdd6e0; white-space:pre; }
+  .code .k{ color:var(--accent); } .code .s{ color:#7ee0b8; } .code .c{ color:var(--muted); }
+  .arch-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start; }
+  @media (max-width:760px){ .arch-grid{ grid-template-columns:1fr; } }
+
+  .gallery{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:680px){ .gallery{ grid-template-columns:1fr; } }
+  .shot{ border:1px solid var(--line); border-radius:14px; overflow:hidden; cursor:zoom-in; background:var(--panel);
+    transition:transform .3s, border-color .3s; display:block; }
+  .shot:hover{ transform:translateY(-4px); border-color:color-mix(in oklab, var(--accent) 45%, var(--line)); }
+  .shot img{ width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; display:block; }
+  .shot .cap{ font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted); padding:11px 15px; border-top:1px solid var(--line); }
+
+  .stack{ display:flex; flex-direction:column; gap:16px; }
+  .stack-row{ display:grid; grid-template-columns:160px 1fr; gap:18px; align-items:start; padding-bottom:16px; border-bottom:1px solid var(--line); }
+  @media (max-width:600px){ .stack-row{ grid-template-columns:1fr; gap:8px; } }
+  .stack-row .lbl{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); padding-top:5px; }
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{ font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted); border:1px solid var(--line); padding:5px 11px; border-radius:999px; }
+
+  .insight{ border-left:2px solid var(--accent); padding:6px 0 6px 22px; margin-bottom:26px; }
+  .insight h3{ font-size:17px; font-weight:600; margin-bottom:6px; color:var(--text); }
+  .insight p{ font-size:15.5px; }
+
+  .endcta{ text-align:center; border-top:1px solid var(--line); background:var(--bg2); }
+  .endcta h2{ font-size:clamp(28px,5vw,46px); }
+  .endcta em{ font-style:normal; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+  /* lightbox */
+  .lb{ position:fixed; inset:0; z-index:100; background:rgba(2,4,8,.92); display:none;
+    align-items:center; justify-content:center; padding:30px; cursor:zoom-out; }
+  .lb.on{ display:flex; }
+  .lb img{ max-width:100%; max-height:100%; border-radius:10px; border:1px solid var(--line); box-shadow:0 30px 90px rgba(0,0,0,.6); }
+  .lb .x{ position:absolute; top:20px; right:26px; color:var(--muted); font-size:30px; font-family:"JetBrains Mono",monospace; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="../index.html"><i></i>amir.aijaz</a>
+  <div class="nav-links">
+    <a href="../index.html#experience">Experience</a>
+    <a href="../projects.html" class="active">Projects</a>
+    <a href="../index.html#skills">Skills</a>
+    <a href="../index.html#credentials">Credentials</a>
+    <a href="../docs/amir-aijaz-cv.pdf" target="_blank" rel="noopener">CV ↗</a>
+    <a class="navbtn primary nav-cta" href="../index.html#contact">Get in touch</a>
+  </div>
+</nav>
+
+<section class="wrap" style="padding-top:104px;padding-bottom:34px;">
+  <div class="eyebrow">AI Governance · Open Source · MIT</div>
+  <h1>Vigil</h1>
+  <div class="sub">AI Governance Dashboard</div>
+  <p class="lead">An open-source, self-hostable platform that gives teams running LLMs in production the <b>observability, safety scanning and audit trails</b> that enterprises pay $500K+ for. Governance-first by design, with built-in mapping to the <b>NIST AI Risk Management Framework</b> and a one-command Docker deploy.</p>
+  <div class="ctas">
+    <a class="btn primary" href="https://vigil-amir.vercel.app" target="_blank" rel="noopener">Live demo ↗</a>
+    <a class="btn" href="https://github.com/amiraijaz/ai-governance-dashboard" target="_blank" rel="noopener">GitHub ↗</a>
+    <a class="btn" href="https://pypi.org/project/aigovkit/" target="_blank" rel="noopener">aigovkit on PyPI ↗</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>249</b><span>models cost-tracked</span></div>
+    <div class="stat"><b>&lt;50ms</b><span>ingest latency</span></div>
+    <div class="stat"><b>NIST</b><span>AI RMF reports</span></div>
+    <div class="stat"><b>MIT</b><span>open source + SDK</span></div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:0;">
+  <div class="hero-shot"><img src="../images/Vigil/dashboard.webp" alt="Vigil governance dashboard overview" loading="eager"></div>
+</section>
+
+<div class="divider"></div>
+
+<section class="wrap">
+  <h2><span class="n">01</span>The problem</h2>
+  <p class="section-intro">Mid-sized teams ship LLM features fast, but fly blind: no central record of what models are deployed, no automated safety scanning on real traffic, and no audit trail when something goes wrong or a compliance question lands. The tools that solve this (enterprise AI governance suites) start around <b>$500K/year</b>. Vigil closes that gap with a free, self-hostable platform you can stand up with a single <span class="mono" style="color:var(--accent)">docker compose up</span>.</p>
+</section>
+
+<section class="wrap" style="padding-top:0;">
+  <h2><span class="n">02</span>What it does</h2>
+  <p class="section-intro">Five capabilities, each mapped to a real governance need.</p>
+  <div class="features">
+    <div class="feature">
+      <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/></svg></div>
+      <h3>Model registry &amp; risk tiers</h3>
+      <p>Central record of every deployed model: owner, deployment date, use case, and a Low/Medium/High/Critical risk tier that drives the NIST-aligned dashboards.</p>
+    </div>
+    <div class="feature">
+      <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l5-5 3 3 8-9"/><path d="M16 6h4v4"/></svg></div>
+      <h3>Audit logging &amp; cost tracking</h3>
+      <p>Server-side cost computation across 249 models from the LiteLLM catalog (refreshed daily), plus p50/p95/p99 latency analytics via PostgreSQL window functions.</p>
+    </div>
+    <div class="feature">
+      <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 5 6v5c0 4.5 3 7.3 7 8.5 4-1.2 7-4 7-8.5V6z"/></svg></div>
+      <h3>Safety scanning</h3>
+      <p>PII detection (Microsoft Presidio), toxicity (OpenAI Moderation) and prompt-injection pattern matching, producing typed flags with confidence scores and GREEN/YELLOW/RED severity.</p>
+    </div>
+    <div class="feature">
+      <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+      <h3>Human review queue</h3>
+      <p>Severity-based triage for flagged interactions with a reviewer sign-off workflow: notes, recorded email, and an outcome of safe, issue_found or escalated.</p>
+    </div>
+    <div class="feature">
+      <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
+      <h3>NIST AI RMF reports</h3>
+      <p>One-click PDF reports that map audit data to the four RMF functions (Govern, Map, Measure, Manage), rendered with WeasyPrint via async generation and status polling.</p>
+    </div>
+    <div class="feature">
+      <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></div>
+      <h3>aigovkit Python SDK</h3>
+      <p>A single drop-in call at the LLM invocation point. Synchronous, 2-second timeout, and it <b>never raises</b> on logging failures, so it cannot add latency or risk to the host app.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:0;">
+  <h2><span class="n">03</span>How it works</h2>
+  <p class="section-intro">The hard constraint: governance instrumentation must never slow down or destabilise the host application. So the ingest path is tiny and synchronous, and every expensive safety check runs asynchronously after the response is already returned.</p>
+  <div class="arch-grid">
+    <div>
+      <div class="code">
+        <div class="bar"><i></i><i></i><i></i><span>integrate — aigovkit</span></div>
+<pre><code><span class="k">from</span> aigovkit <span class="k">import</span> AIGovLogger
+
+logger = AIGovLogger(api_key=<span class="s">"sk_..."</span>,
+                     model_id=<span class="s">"&lt;uuid-from-registry&gt;"</span>)
+
+response = logger.call(
+    provider=<span class="s">"anthropic"</span>,
+    model=<span class="s">"claude-haiku-4-5"</span>,
+    messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>,
+               <span class="s">"content"</span>: <span class="s">"Hello"</span>}],
+    user_id=<span class="s">"user_123"</span>,
+)</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="code">
+        <div class="bar"><i></i><i></i><i></i><span>data flow</span></div>
+<pre><code><span class="c"># ingest path (&lt; 50ms)</span>
+SDK ─▶ FastAPI <span class="c">/api/logs</span>
+        ├─▶ hash API key
+        ├─▶ price lookup (249 models)
+        └─▶ write row ─▶ PostgreSQL ─▶ 201
+
+<span class="c"># async, after the response</span>
+BackgroundTasks ─▶ Safety Scanner
+   PII · toxicity · injection
+        └─▶ safety_flags ─▶ Review Queue
+
+Redis ─▶ rate limiting · caching
+PostgreSQL ─▶ React dashboard + PDF reports</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="wrap">
+  <h2><span class="n">04</span>Inside the product</h2>
+  <p class="section-intro">Six views from the live application. Click any screenshot to enlarge.</p>
+  <div class="gallery">
+    <a class="shot" data-full="../images/Vigil/dashboard.webp"><img src="../images/Vigil/dashboard.webp" alt="Dashboard" loading="lazy"><div class="cap">Dashboard · risk overview &amp; activity</div></a>
+    <a class="shot" data-full="../images/Vigil/model-registry.webp"><img src="../images/Vigil/model-registry.webp" alt="Model Registry" loading="lazy"><div class="cap">Model registry · owners &amp; risk tiers</div></a>
+    <a class="shot" data-full="../images/Vigil/audit-logs.webp"><img src="../images/Vigil/audit-logs.webp" alt="Audit Logs" loading="lazy"><div class="cap">Audit logs · every request &amp; cost</div></a>
+    <a class="shot" data-full="../images/Vigil/analytics.webp"><img src="../images/Vigil/analytics.webp" alt="Analytics" loading="lazy"><div class="cap">Analytics · cost &amp; latency percentiles</div></a>
+    <a class="shot" data-full="../images/Vigil/review-queue.webp"><img src="../images/Vigil/review-queue.webp" alt="Review Queue" loading="lazy"><div class="cap">Review queue · triage flagged items</div></a>
+    <a class="shot" data-full="../images/Vigil/reports.webp"><img src="../images/Vigil/reports.webp" alt="Reports" loading="lazy"><div class="cap">Reports · one-click NIST RMF PDF</div></a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="wrap">
+  <h2><span class="n">05</span>Tech stack</h2>
+  <div class="stack" style="margin-top:30px;">
+    <div class="stack-row"><div class="lbl">Backend</div><div class="tags"><span class="tag">FastAPI</span><span class="tag">async SQLAlchemy 2.0</span><span class="tag">asyncpg</span><span class="tag">PostgreSQL 15</span><span class="tag">Redis 7</span><span class="tag">APScheduler</span><span class="tag">slowapi</span></div></div>
+    <div class="stack-row"><div class="lbl">Frontend</div><div class="tags"><span class="tag">React 18</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span><span class="tag">Recharts</span></div></div>
+    <div class="stack-row"><div class="lbl">Safety</div><div class="tags"><span class="tag">Microsoft Presidio</span><span class="tag">OpenAI Moderation</span><span class="tag">regex injection rules</span></div></div>
+    <div class="stack-row"><div class="lbl">Reports</div><div class="tags"><span class="tag">WeasyPrint</span><span class="tag">Jinja2</span></div></div>
+    <div class="stack-row"><div class="lbl">Platform</div><div class="tags"><span class="tag">Docker Compose</span><span class="tag">pytest</span><span class="tag">Render</span><span class="tag">Supabase</span><span class="tag">Upstash</span><span class="tag">Vercel</span></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="wrap">
+  <h2><span class="n">06</span>Engineering decisions</h2>
+  <div style="margin-top:30px;">
+    <div class="insight">
+      <h3>Async safety, synchronous ingest</h3>
+      <p>Running PII, toxicity and injection checks inline would blow the latency budget. Moving them to FastAPI background tasks, after the 201 is returned, keeps ingest under 50ms while still flagging everything for the review queue.</p>
+    </div>
+    <div class="insight">
+      <h3>The SDK is the product surface</h3>
+      <p>An early lesson: I built the dashboard before there were SDK users, which shaped the product prematurely. The SDK is the component that lives inside customer code, so it is where real feedback comes from. It is designed to be impossible to break a host app with: it never raises and times out in two seconds.</p>
+    </div>
+    <div class="insight">
+      <h3>Governance as the primary product</h3>
+      <p>Tools like Langfuse and Helicone treat governance as secondary to tracing or cost proxying. Vigil inverts that: NIST AI RMF compliance is the first-class feature, shipped MIT-licensed with no cloud pricing tiers.</p>
+    </div>
+  </div>
+</section>
+
+<section class="endcta">
+  <div class="wrap">
+    <h2>Want something like this <em>shipped for your team?</em></h2>
+    <div class="ctas" style="justify-content:center;">
+      <a class="btn primary" href="../index.html#contact">Get in touch</a>
+      <a class="btn" href="../projects.html">See all projects</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="sf-wrap">
+    <div class="sf-top">
+      <div class="sf-brand">
+        <a class="logo" href="../index.html"><i></i>amir.aijaz</a>
+        <p class="sf-tag">Full-stack AI engineer building production LLM systems, RAG, voice agents and computer vision.</p>
+      </div>
+      <div class="sf-links">
+        <a class="navbtn primary" href="../index.html#contact">Get in touch</a>
+        <a class="navbtn" href="../docs/amir-aijaz-cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+        <a class="navbtn" href="https://www.linkedin.com/in/amir-aijaz-01a134233" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="navbtn" href="https://github.com/amiraijaz" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="foot-meta">
+      <span>© 2026 Amir Aijaz</span>
+      <span>Karachi, PK → Remote, worldwide</span>
+      <a href="tel:+923233232974">+92 323 3232974</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb"><span class="x">✕</span><img id="lb-img" src="" alt=""></div>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'), img=document.getElementById('lb-img');
+  document.querySelectorAll('.shot').forEach(function(s){
+    s.addEventListener('click', function(e){ e.preventDefault(); img.src=s.dataset.full; lb.classList.add('on'); });
+  });
+  lb.addEventListener('click', function(){ lb.classList.remove('on'); img.src=''; });
+  addEventListener('keydown', function(e){ if(e.key==='Escape'){ lb.classList.remove('on'); img.src=''; } });
+})();
+</script>
+<script>(function(){var n=document.querySelector('nav');if(n){var s=function(){n.classList.toggle('scrolled',scrollY>20);};s();addEventListener('scroll',s,{passive:true});}})();</script>
+</body>
+</html>
