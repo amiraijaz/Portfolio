@@ -257,6 +257,9 @@
   .sec-head .idx{ font-family:"JetBrains Mono",monospace; font-size:14px; color:var(--accent); }
   .sec-head h2{ font-size: clamp(32px,4.6vw,54px); font-weight:700; letter-spacing:-.02em; }
   .sec-head .rule{ flex:1; height:1px; background:var(--line); align-self:center; }
+  .sec-count{ font-family:"JetBrains Mono",monospace; font-size:13px; letter-spacing:.05em; white-space:nowrap;
+    color:var(--accent); border:1px solid color-mix(in oklab, var(--accent) 35%, transparent);
+    background:color-mix(in oklab, var(--accent) 8%, transparent); padding:5px 12px; border-radius:999px; align-self:center; }
 
   .reveal{ opacity:0; transform:translateY(34px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
   .reveal.in{ opacity:1; transform:none; }
@@ -763,7 +766,7 @@
 
 <section id="projects" data-screen-label="Projects">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="idx">03</span><h2>Featured Projects</h2><span class="rule"></span></div>
+    <div class="sec-head reveal"><span class="idx">03</span><h2>Featured Projects</h2><span class="rule"></span><span class="sec-count">20+ builds</span></div>
     <div class="proj-grid reveal">
       <a class="card feature" href="projects/vigil.html">
         <div class="kind"><span class="no">001</span><span>AI GOVERNANCE · OPEN SOURCE</span></div>
@@ -820,7 +823,7 @@
       <a class="card viewall" href="projects.html">
         <div class="kind"><span class="no">***</span><span>FULL INDEX</span></div>
         <h3>View all<br />projects</h3>
-        <p class="vs">9 projects · filter by domain</p>
+        <p class="vs">20 projects · filter by domain</p>
         <div class="big-arrow">→</div>
       </a>
     </div>
