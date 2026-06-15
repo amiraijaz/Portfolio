@@ -327,6 +327,15 @@
   /* ---------- projects ---------- */
   #projects{ background: var(--bg2); border-block:1px solid var(--line); }
   .proj-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  /* optional project screenshot at the top of a featured card (pulled to the
+     card edges past the 28px padding; top corners match the card radius) */
+  .card .card-thumb{ margin:-28px -28px 8px; height:190px; overflow:hidden;
+    border-radius:20px 20px 0 0; border-bottom:1px solid var(--line); background:var(--bg2); }
+  .card.feature .card-thumb{ height:300px; }
+  .card .card-thumb img{ width:100%; height:100%; object-fit:cover; object-position:center top;
+    display:block; transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+  .card:hover .card-thumb img{ transform:scale(1.05); }
+  @media (max-width:640px){ .card .card-thumb, .card.feature .card-thumb{ height:172px; } }
   .card{
     position:relative; border-radius:20px; border:1px solid var(--line);
     background: linear-gradient(180deg, var(--panel), color-mix(in oklab, var(--panel) 45%, var(--bg2)));
@@ -833,6 +842,7 @@
     <div class="sec-head reveal"><span class="idx">03</span><h2>Featured Projects</h2><span class="rule"></span><span class="sec-count">20+ builds</span></div>
     <div class="proj-grid reveal">
       <a class="card feature" href="projects/vigil.html">
+        <div class="card-thumb"><img src="images/Vigil/dashboard.webp" alt="Vigil AI governance dashboard" loading="lazy" onerror="this.closest('.card-thumb').remove()"></div>
         <div class="kind"><span class="no">001</span><span>AI GOVERNANCE · OPEN SOURCE</span></div>
         <h3>Vigil: AI Governance Dashboard</h3>
         <p>LLM observability &amp; safety platform: model registry with risk classification, full audit logging, automated PII &amp; toxicity detection, and one-click NIST AI RMF compliance reports. Published Python SDK on PyPI.</p>
@@ -844,15 +854,9 @@
         <div class="tags"><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span></div>
         <span class="go">→</span>
       </a>
-      <a class="card" href="https://legal-mind-ai-assistant.vercel.app/" target="_blank" rel="noopener">
-        <div class="kind"><span class="no">002</span><span>RAG · LIVE</span></div>
-        <h3>Legal Mind AI</h3>
-        <p>RAG assistant that lets legal teams query large PDFs in natural language with cited answers. Supports Gemini, OpenAI and local Ollama backends.</p>
-        <div class="tags"><span class="tag">LangChain</span><span class="tag">ChromaDB</span><span class="tag">FastAPI</span></div>
-        <span class="go">→</span>
-      </a>
       <a class="card" href="#contact">
-        <div class="kind"><span class="no">003</span><span>VOICE AI</span></div>
+        <div class="card-thumb"><img src="images/AI%20Calling%20Agent/AI%20Voice%20calling.png" alt="AI voice calling agent" loading="lazy" onerror="this.closest('.card-thumb').remove()"></div>
+        <div class="kind"><span class="no">002</span><span>VOICE AI</span></div>
         <h3>AI Voice Calling Agent</h3>
         <p>Production outbound and inbound voice agent for automated phone qualification and warm transfer. Multi-tenant, TCPA-compliant and backed by 586 hermetic tests, with a concurrency-safe dispatcher.</p>
         <div class="meta">
@@ -863,25 +867,39 @@
         <div class="tags"><span class="tag">Vapi</span><span class="tag">FastAPI</span><span class="tag">Celery</span><span class="tag">Telephony</span></div>
         <span class="go">→</span>
       </a>
-      <a class="card" href="https://github.com/amiraijaz/SignVision.git" target="_blank" rel="noopener">
-        <div class="kind"><span class="no">004</span><span>COMPUTER VISION</span></div>
-        <h3>SignVision</h3>
-        <p>Real-time Urdu sign-language translator: MediaPipe Holistic keypoints (1,662-dim) classified by a CNN-LSTM, rendered as Urdu text and speech.</p>
-        <div class="tags"><span class="tag">MediaPipe</span><span class="tag">CNN-LSTM</span><span class="tag">TensorFlow</span></div>
+      <a class="card" href="https://legal-mind-ai-assistant.vercel.app/" target="_blank" rel="noopener">
+        <div class="card-thumb"><img src="images/Legal%20Mind/Legal%20Mind%20AI.png" alt="Legal Mind AI" loading="lazy" onerror="this.closest('.card-thumb').remove()"></div>
+        <div class="kind"><span class="no">003</span><span>RAG · LIVE</span></div>
+        <h3>Legal Mind AI</h3>
+        <p>RAG assistant that lets legal teams query large PDFs in natural language with cited answers. Supports Gemini, OpenAI and local Ollama backends.</p>
+        <div class="tags"><span class="tag">LangChain</span><span class="tag">ChromaDB</span><span class="tag">FastAPI</span></div>
         <span class="go">→</span>
       </a>
-      <a class="card" href="https://github.com/amiraijaz/Fog-Removal-for-Autonomous-Vehicles" target="_blank" rel="noopener">
-        <div class="kind"><span class="no">005</span><span>COMPUTER VISION</span></div>
-        <h3>Fog Removal for AVs</h3>
-        <p>Dehazing pipeline (dark channel prior + CLAHE) feeding YOLOv8 detection of pedestrians, vehicles and signals in adverse weather.</p>
-        <div class="tags"><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">CLAHE</span></div>
+      <a class="card" href="https://github.com/amiraijaz" target="_blank" rel="noopener">
+        <div class="card-thumb"><img src="images/Quant%20Strategy%20Validation%20Engine/Quant%20Strategy%20Validation%20Engine.png" alt="Quant strategy validation engine" loading="lazy" onerror="this.closest('.card-thumb').remove()"></div>
+        <div class="kind"><span class="no">004</span><span>QUANT · BACKTESTING</span></div>
+        <h3>Quant Strategy Validation Engine</h3>
+        <p>Offline backtesting harness validating trading strategies over ~9 years of BTC, ETH &amp; SOL data, net of realistic fees and slippage — with strict no-look-ahead discipline and a go/no-go report.</p>
+        <div class="meta">
+          <div><b>~9yr</b><span>backtested</span></div>
+          <div><b>43</b><span>hermetic tests</span></div>
+          <div><b>-27%</b><span>max drawdown</span></div>
+        </div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Backtesting</span><span class="tag">Pandas</span><span class="tag">Risk metrics</span></div>
         <span class="go">→</span>
       </a>
-      <a class="card" href="https://github.com/amiraijaz/UK-License-Plate-Detection" target="_blank" rel="noopener">
-        <div class="kind"><span class="no">006</span><span>COMPUTER VISION</span></div>
-        <h3>UK License Plate Recognition</h3>
-        <p>Real-time plate detection &amp; reading with YOLOv8, designed for traffic-signal monitoring applications.</p>
-        <div class="tags"><span class="tag">YOLOv8</span><span class="tag">OCR</span><span class="tag">Python</span></div>
+      <a class="card" href="https://github.com/amiraijaz/Medical-Chatbot" target="_blank" rel="noopener">
+        <div class="kind"><span class="no">005</span><span>MULTIMODAL · HEALTHCARE</span></div>
+        <h3>AI Medical Chatbot</h3>
+        <p>Multimodal medical assistant that analyzes medical images, answers health questions, and supports voice interaction using LLMs and computer vision.</p>
+        <div class="tags"><span class="tag">LLaMA 3</span><span class="tag">OpenAI API</span><span class="tag">Computer Vision</span><span class="tag">Speech</span><span class="tag">Flask</span></div>
+        <span class="go">→</span>
+      </a>
+      <a class="card" href="https://github.com/amiraijaz/Insta-Agent" target="_blank" rel="noopener">
+        <div class="kind"><span class="no">006</span><span>AUTOMATION · AGENTS</span></div>
+        <h3>Instagram Agent</h3>
+        <p>CrewAI multi-agent system that researches the market, plans content, generates visuals and writes captions to automate Instagram content end to end.</p>
+        <div class="tags"><span class="tag">CrewAI</span><span class="tag">LangChain</span><span class="tag">Serper API</span><span class="tag">Python</span></div>
         <span class="go">→</span>
       </a>
       <a class="card viewall" href="projects.html">
