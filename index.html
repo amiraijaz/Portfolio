@@ -461,33 +461,6 @@
 
   /* ---------- workflow ---------- */
   #workflow{ background: var(--bg2); border-top:1px solid var(--line); }
-  /* ---- Spline accent in the "How I Ship" left gutter ---- */
-  #workflow .wrap{ position:relative; z-index:1; }   /* keep cards/log above the scene */
-  .ship-spline{
-    position:absolute; top:50%; left:clamp(0px, 1vw, 44px);
-    transform:translateY(-50%);
-    width:clamp(220px, 17vw, 330px);
-    height:clamp(360px, 52vh, 600px);
-    z-index:0; pointer-events:none;
-    background: var(--bg2);   /* flat #04070c behind the transparent canvas — no load flash, exact match */
-  }
-  .ship-spline spline-viewer{ width:100%; height:100%; display:block; }
-  /* mask this scene's baked-in watermark (matches the section bg #04070c) */
-  .ship-spline::after{
-    content:""; position:absolute; right:0; bottom:0;
-    width:240px; height:120px; z-index:2; pointer-events:none;
-    background: radial-gradient(200px 96px at 100% 100%, var(--bg2) 76%, transparent);
-  }
-  /* On tablet/mobile the left gutter is gone, so the rocket drops into the
-     normal flow *below* the pipeline (the .ship-spline div sits after .wrap). */
-  @media (max-width:1024px){
-    .ship-spline{
-      position:relative; transform:none; left:auto; top:auto;
-      width:min(300px,72vw); height:clamp(260px,52vw,360px);
-      margin:18px auto 0; background:transparent; z-index:1;
-    }
-    .ship-spline::after{ width:160px; height:80px; background:radial-gradient(140px 70px at 100% 100%, var(--bg2) 70%, transparent); }
-  }
 
   /* ---- Lottie robot accent: consistent on every screen — centred in the
      normal flow, below the marquee stripe and above the GitHub chart
@@ -916,9 +889,6 @@
       </div>
     </div>
     <div class="wflog reveal" id="wflog" aria-live="off"></div>
-  </div>
-  <div class="ship-spline" aria-hidden="true">
-    <spline-viewer background="transparent" data-spline="https://prod.spline.design/XcrNPH2QiJpC9OGu/scene.splinecode"></spline-viewer>
   </div>
 </section>
 
