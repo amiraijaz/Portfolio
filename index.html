@@ -498,7 +498,7 @@
     width:min(280px, 62vw); aspect-ratio:1; height:auto;
     pointer-events:none;
   }
-  .skills-bot dotlottie-wc{ width:100%; height:100%; display:block; }
+  .skills-bot img{ width:100%; height:100%; display:block; object-fit:contain; }
   .pipe{ display:flex; align-items:stretch; }
   .stage{
     flex:1; min-width:0; position:relative; overflow:hidden;
@@ -680,7 +680,7 @@
 
 <header data-screen-label="Hero">
   <div class="hero-spline" aria-hidden="true">
-    <spline-viewer url="https://prod.spline.design/JeHZWftVk1wMctOz/scene.splinecode"></spline-viewer>
+    <spline-viewer data-spline="https://prod.spline.design/JeHZWftVk1wMctOz/scene.splinecode"></spline-viewer>
   </div>
   <div class="hero-inner">
     <div class="hero-tag mono"><span class="pulse"></span>OPEN TO OPPORTUNITIES — REMOTE / WORLDWIDE</div>
@@ -758,7 +758,7 @@
     <div class="wflog reveal" id="wflog" aria-live="off"></div>
   </div>
   <div class="ship-spline" aria-hidden="true">
-    <spline-viewer background="transparent" url="https://prod.spline.design/XcrNPH2QiJpC9OGu/scene.splinecode"></spline-viewer>
+    <spline-viewer background="transparent" data-spline="https://prod.spline.design/XcrNPH2QiJpC9OGu/scene.splinecode"></spline-viewer>
   </div>
 </section>
 
@@ -939,7 +939,7 @@
     </div>
 
     <div class="skills-bot" aria-hidden="true">
-      <dotlottie-wc src="assets/runningrobot.lottie" autoplay loop></dotlottie-wc>
+      <img src="assets/robot-running.svg" alt="" loading="lazy" decoding="async" width="280" height="280">
     </div>
     <div class="gh reveal">
       <div class="gh-top">
@@ -1391,22 +1391,43 @@
 </script>
 
 <script>
-/* ---- defer heavy animation runtimes until the page is interactive ---- */
+/* ---- Spline (WebGL) loaded lazily, per scene, and skipped on constrained
+   devices. The ~1.6MB runtime + scenes only download when a scene nears the
+   viewport; the rocket never loads unless you scroll to it. The robot is a
+   self-animating SVG now, so no Lottie/WASM runtime is loaded at all. ---- */
 (function(){
-  var SRCS = [
-    "https://unpkg.com/@splinetool/viewer@1.12.97/build/spline-viewer.js",
-    "https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.16/dist/index.js"
-  ];
-  function loadAnim(){
-    SRCS.forEach(function(src){
-      var s = document.createElement("script");
-      s.type = "module"; s.src = src; s.async = true;
-      document.head.appendChild(s);
-    });
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var conn = navigator.connection || {};
+  var save = conn.saveData === true;
+  var slowNet = /^(slow-2g|2g)$/.test(conn.effectiveType || '');
+  var small = matchMedia('(max-width: 760px)').matches;
+  if (reduce || save || slowNet) return;   // honor data-saver / accessibility / 2G
+
+  var viewers = [].slice.call(document.querySelectorAll('spline-viewer[data-spline]'));
+  if (!viewers.length || !('IntersectionObserver' in window)) return;
+
+  var loaded = false, loading = false, queue = [];
+  function setUrl(v){ if (!v.getAttribute('url')) v.setAttribute('url', v.getAttribute('data-spline')); }
+  function ensureScript(){
+    if (loaded || loading) return;
+    loading = true;
+    var s = document.createElement('script');
+    s.type = 'module'; s.async = true;
+    s.src = 'https://unpkg.com/@splinetool/viewer@1.12.97/build/spline-viewer.js';
+    s.onload = function(){ loaded = true; queue.splice(0).forEach(setUrl); };
+    document.head.appendChild(s);
   }
-  function schedule(){ (window.requestIdleCallback || function(f){ setTimeout(f, 200); })(loadAnim, { timeout: 2500 }); }
-  if (document.readyState === "complete") schedule();
-  else addEventListener("load", schedule);
+  function activate(v){ if (loaded) setUrl(v); else { queue.push(v); ensureScript(); } }
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ activate(e.target); io.unobserve(e.target); } });
+  }, { rootMargin: '400px' });
+
+  viewers.forEach(function(v){
+    // The hero scene is only a faint backdrop on phones — not worth ~2MB there.
+    if (small && v.closest('.hero-spline')) return;
+    io.observe(v);
+  });
 })();
 </script>
 <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" defer></script>
