@@ -173,7 +173,7 @@
   .btn.primary{ background: var(--accent); color:#181203; border-color:transparent; }
   .btn.primary:hover{ box-shadow: 0 6px 32px color-mix(in oklab, var(--accent) 45%, transparent); }
   .nav-cta{ padding:9px 20px; font-size:14px; }
-  @media (max-width:760px){ .nav-links a:not(.btn){ display:none; } }
+  @media (max-width:760px){ .nav-links a:not(.btn){ display:none; } nav{ max-width:calc(100vw - 20px); gap:16px; } }
 
   /* ---------- hero ---------- */
   header{
@@ -373,7 +373,7 @@
   .card.viewall:hover .big-arrow{ transform: translateX(10px); }
   .card.viewall:hover{ box-shadow: 0 30px 70px -26px color-mix(in oklab, var(--accent) 55%, transparent); }
   @media (max-width:980px){ .proj-grid{ grid-template-columns:1fr 1fr; } .card.feature{ grid-column:span 2; } }
-  @media (max-width:640px){ .proj-grid{ grid-template-columns:1fr; } .card.feature{ grid-column:span 1; } }
+  @media (max-width:640px){ .proj-grid{ grid-template-columns:1fr; justify-items:center; } .card.feature{ grid-column:span 1; } .proj-grid .card{ width:100%; max-width:460px; } }
 
   /* ---------- skills ---------- */
   .sk{ border-top:1px solid var(--line); }
@@ -387,7 +387,7 @@
   .sk-row .tags{ grid-row:span 2; display:flex; flex-wrap:wrap; gap:8px; align-content:center; }
   @media (max-width:860px){
     .sk-row{ grid-template-columns:1fr 80px; }
-    .sk-row .tags{ grid-row:auto; grid-column:1/3; }
+    .sk-row .tags{ grid-row:auto; grid-column:1/3; justify-content:center; }
     .sk-row .bar{ grid-column:1/3; }
   }
 
@@ -426,7 +426,7 @@
   .cred ul li::before{ content:"▸"; position:absolute; left:0; color:var(--accent); }
   .cred ul li b{ color:var(--text); font-weight:600; display:block; }
   .cred a{ color:var(--accent); text-decoration:none; font-size:13.5px; font-family:"JetBrains Mono",monospace; }
-  @media (max-width:920px){ .cred-grid{ grid-template-columns:1fr; } }
+  @media (max-width:920px){ .cred-grid{ grid-template-columns:1fr; justify-items:center; } .cred{ width:100%; max-width:460px; } }
 
   /* ---------- workflow ---------- */
   #workflow{ background: var(--bg2); border-top:1px solid var(--line); }
@@ -523,7 +523,8 @@
   .wflog .wl .k{ color:var(--accent); }
   .wflog .wl.sys{ color: color-mix(in oklab, var(--muted) 55%, transparent); }
   @media (max-width:860px){
-    .pipe{ flex-direction:column; }
+    .pipe{ flex-direction:column; align-items:center; }
+    .stage{ width:100%; max-width:420px; flex:0 0 auto; }
     .conn{ flex-basis:34px; min-height:34px; width:2px; height:auto; align-self:center; }
     .conn .fill{ transform:scaleY(var(--p,0)); transform-origin:top; }
     .conn .dot{ left:50%; top:calc(var(--p,0)*100%); }
@@ -561,7 +562,12 @@
   .foot-status b{ color:var(--accent); font-weight:600; }
   @media (max-width:760px){
     .contact-grid{ grid-template-columns:1fr; gap:30px; }
-    .contact-card{ align-items:flex-start; text-align:left; margin-top:4px; }
+    .contact-main{ display:flex; flex-direction:column; align-items:center; }
+    .contact-main .sub{ text-align:center; }
+    .foot-ctas{ justify-content:center; width:100%; }
+    .cv-alt{ text-align:center; }
+    .contact-card{ align-items:center; text-align:center; margin-top:4px; }
+    .foot-meta{ justify-content:center; text-align:center; }
   }
 
   /* ---- interactive terminal ---- */
