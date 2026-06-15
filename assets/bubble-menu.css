@@ -1,0 +1,65 @@
+/* Vanilla port of React Bits "BubbleMenu", themed for the dark site.
+   Animations are driven by GSAP (loaded from CDN). The selector nav.bubble-menu
+   intentionally overrides the previous floating-pill nav. */
+
+nav.bubble-menu{
+  position:fixed; left:0; right:0; top:16px; margin:0; max-width:none; transform:none;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:0 clamp(16px,5vw,40px); pointer-events:none; z-index:100;
+  background:transparent; border:0; border-radius:0;
+  -webkit-backdrop-filter:none; backdrop-filter:none; animation:none; white-space:nowrap;
+}
+.bubble-menu .bubble{
+  --bubble-size:50px; height:var(--bubble-size); border-radius:999px;
+  background:var(--panel); border:1px solid var(--line);
+  box-shadow:0 10px 30px -12px rgba(0,0,0,.7);
+  display:inline-flex; align-items:center; justify-content:center; pointer-events:auto;
+}
+.bubble-menu .logo-bubble{
+  padding:0 18px; gap:9px; text-decoration:none; color:var(--text);
+  font-weight:700; font-size:16px; letter-spacing:.03em;
+}
+.bubble-menu .logo-bubble .dot{ width:9px; height:9px; border-radius:50%; background:var(--accent);
+  box-shadow:0 0 12px var(--accent); animation:bm-pulse 2s infinite; }
+@keyframes bm-pulse{ 0%,100%{ box-shadow:0 0 0 0 color-mix(in oklab, var(--accent) 60%, transparent);} 60%{ box-shadow:0 0 0 8px transparent;} }
+.bubble-menu .toggle-bubble{ width:var(--bubble-size); cursor:pointer; flex-direction:column; gap:6px; }
+.bubble-menu .menu-line{ width:22px; height:2px; border-radius:2px; background:var(--text);
+  transition:transform .3s ease, opacity .3s ease; }
+.bubble-menu .menu-btn.open .menu-line:first-child{ transform:translateY(4px) rotate(45deg); }
+.bubble-menu .menu-btn.open .menu-line:last-child{ transform:translateY(-4px) rotate(-45deg); }
+
+.bubble-menu-items{
+  position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+  padding:96px clamp(20px,5vw,40px) 40px; z-index:99; pointer-events:none;
+  background:color-mix(in oklab, var(--bg,#06090f) 88%, transparent);
+  -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+}
+.bubble-menu-items .pill-list{
+  list-style:none; margin:0 auto; padding:0; display:flex; flex-wrap:wrap; gap:16px;
+  width:100%; max-width:920px; pointer-events:auto; justify-content:center;
+}
+.bubble-menu-items .pill-col{ display:flex; flex:0 0 calc((100% - 32px)/3); }
+.bubble-menu-items .pill-link{
+  --item-rot:0deg; --hover-bg:var(--accent); --hover-color:#0a0f08;
+  width:100%; min-height:128px; padding:clamp(1rem,3vw,2.2rem) 1rem;
+  display:flex; align-items:center; justify-content:center;
+  font-size:clamp(1.4rem,3vw,2.3rem); font-weight:600; border-radius:26px;
+  background:var(--panel); color:var(--text); border:1px solid var(--line); text-decoration:none;
+  box-shadow:0 16px 44px -18px rgba(0,0,0,.75); white-space:nowrap; overflow:hidden;
+  transition:background .3s, color .3s, border-color .3s; will-change:transform;
+}
+@media (min-width:900px){
+  .bubble-menu-items .pill-link{ transform:rotate(var(--item-rot)); }
+  .bubble-menu-items .pill-link:hover{ transform:rotate(var(--item-rot)) scale(1.05);
+    background:var(--hover-bg); color:var(--hover-color); border-color:transparent; }
+  .bubble-menu-items .pill-link:active{ transform:rotate(var(--item-rot)) scale(.95); }
+}
+.bubble-menu-items .pill-label{ display:inline-block; will-change:transform,opacity; }
+@media (max-width:899px){
+  .bubble-menu-items{ align-items:flex-start; padding-top:92px; }
+  .bubble-menu-items .pill-list{ gap:13px; max-width:440px; }
+  .bubble-menu-items .pill-col{ flex:0 0 100%; }
+  .bubble-menu-items .pill-link{ min-height:72px; font-size:clamp(1.3rem,5vw,1.7rem); border-radius:18px; }
+  .bubble-menu-items .pill-link:hover{ background:var(--hover-bg); color:var(--hover-color); border-color:transparent; }
+}
+body.nav-lock{ overflow:hidden; }
