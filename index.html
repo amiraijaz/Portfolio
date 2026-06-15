@@ -469,8 +469,16 @@
     width:240px; height:120px; z-index:2; pointer-events:none;
     background: radial-gradient(200px 96px at 100% 100%, var(--bg2) 76%, transparent);
   }
-  /* gutter disappears on smaller screens; hide so it never collides with the cards */
-  @media (max-width:1024px){ .ship-spline{ display:none; } }
+  /* On tablet/mobile the left gutter is gone, so the rocket drops into the
+     normal flow *below* the pipeline (the .ship-spline div sits after .wrap). */
+  @media (max-width:1024px){
+    .ship-spline{
+      position:relative; transform:none; left:auto; top:auto;
+      width:min(300px,72vw); height:clamp(260px,52vw,360px);
+      margin:18px auto 0; background:transparent; z-index:1;
+    }
+    .ship-spline::after{ width:160px; height:80px; background:radial-gradient(140px 70px at 100% 100%, var(--bg2) 70%, transparent); }
+  }
 
   /* ---- Lottie robot accent in the Tech Stack right gutter ---- */
   #skills .wrap{ position:relative; z-index:1; }   /* keep skill rows above the robot */
@@ -544,13 +552,16 @@
   body[data-motion="off"] .wflog .wl{ animation:none; }
   .wflog .wl .k{ color:var(--accent); }
   .wflog .wl.sys{ color: color-mix(in oklab, var(--muted) 55%, transparent); }
-  @media (max-width:860px){
-    .pipe{ flex-direction:column; align-items:stretch; }
-    .stage{ width:100%; flex:0 0 auto; }
-    .conn{ flex-basis:34px; min-height:34px; width:2px; height:auto; align-self:center; }
-    .conn .fill{ transform:scaleY(var(--p,0)); transform-origin:top; }
-    .conn .dot{ left:50%; top:calc(var(--p,0)*100%); }
+  /* Tablet & below: the single-row pipeline gets cramped, so lay the stages
+     out as a wrapping grid. The horizontal connectors only read in one row, so
+     hide them here. 3-up on tablet, 2-up on phones, 1-up on the smallest. */
+  @media (max-width:1024px){
+    .pipe{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; align-items:stretch; }
+    .pipe .conn{ display:none; }
+    .stage{ width:auto; min-width:0; }
   }
+  @media (max-width:680px){ .pipe{ grid-template-columns:repeat(2,1fr); gap:12px; } }
+  @media (max-width:360px){ .pipe{ grid-template-columns:1fr; } }
 
   /* ---------- contact ---------- */
   footer{ padding: clamp(80px,10vw,140px) clamp(20px,5vw,64px) 40px; border-top:1px solid var(--line); background:var(--bg2); }
@@ -684,9 +695,6 @@
 </header>
 
 <section id="workflow" data-screen-label="Workflow">
-  <div class="ship-spline" aria-hidden="true">
-    <spline-viewer background="transparent" url="https://prod.spline.design/XcrNPH2QiJpC9OGu/scene.splinecode"></spline-viewer>
-  </div>
   <div class="wrap">
     <div class="sec-head reveal"><span class="idx">01</span><h2>How I Ship</h2><span class="rule"></span></div>
     <div class="pipe reveal">
@@ -739,6 +747,9 @@
       </div>
     </div>
     <div class="wflog reveal" id="wflog" aria-live="off"></div>
+  </div>
+  <div class="ship-spline" aria-hidden="true">
+    <spline-viewer background="transparent" url="https://prod.spline.design/XcrNPH2QiJpC9OGu/scene.splinecode"></spline-viewer>
   </div>
 </section>
 
