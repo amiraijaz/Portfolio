@@ -461,6 +461,20 @@
 
   /* ---------- workflow ---------- */
   #workflow{ background: var(--bg2); border-top:1px solid var(--line); }
+  /* ---- Rocket SVG accent in the "How I Ship" left gutter (lightweight,
+     self-animating SMIL — no WebGL). Sits behind the cards (z-index:0). ---- */
+  #workflow .wrap{ position:relative; z-index:1; }
+  .ship-rocket{
+    position:absolute; top:50%; left:clamp(0px,1.5vw,40px); transform:translateY(-50%);
+    width:clamp(170px,15vw,280px); z-index:0; pointer-events:none;
+  }
+  .ship-rocket img{ width:100%; height:auto; display:block; }
+  /* gutter collapses on smaller screens → drop the rocket into the flow,
+     centred below the pipeline */
+  @media (max-width:1024px){
+    .ship-rocket{ position:relative; transform:none; left:auto; top:auto;
+      width:min(190px,44vw); margin:22px auto 0; }
+  }
 
   /* ---- Lottie robot accent: consistent on every screen — centred in the
      normal flow, below the marquee stripe and above the GitHub chart
@@ -889,6 +903,9 @@
       </div>
     </div>
     <div class="wflog reveal" id="wflog" aria-live="off"></div>
+  </div>
+  <div class="ship-rocket" aria-hidden="true">
+    <img src="assets/rocket-launch.svg" alt="" loading="lazy" decoding="async" width="280" height="380">
   </div>
 </section>
 
