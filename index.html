@@ -489,7 +489,14 @@
     z-index:0; pointer-events:none;
   }
   .skills-bot dotlottie-wc{ width:100%; height:100%; display:block; }
-  @media (max-width:1200px){ .skills-bot{ display:none; } }
+  /* Under 1590px the right gutter is too tight, so the robot drops into the
+     normal flow — above the GitHub chart (the .skills-bot div sits before .gh). */
+  @media (max-width:1589px){
+    .skills-bot{
+      position:relative; transform:none; right:auto; top:auto;
+      width:min(280px,64vw); height:min(280px,64vw); margin:26px auto 4px;
+    }
+  }
   .pipe{ display:flex; align-items:stretch; }
   .stage{
     flex:1; min-width:0; position:relative; overflow:hidden;
@@ -888,9 +895,6 @@
 </section>
 
 <section id="skills" data-screen-label="Skills">
-  <div class="skills-bot" aria-hidden="true">
-    <dotlottie-wc src="assets/runningrobot.lottie" autoplay loop></dotlottie-wc>
-  </div>
   <div class="wrap">
     <div class="sec-head reveal"><span class="idx">04</span><h2>Tech Stack</h2><span class="rule"></span></div>
     <div class="sk">
@@ -922,6 +926,9 @@
       </div>
     </div>
 
+    <div class="skills-bot" aria-hidden="true">
+      <dotlottie-wc src="assets/runningrobot.lottie" autoplay loop></dotlottie-wc>
+    </div>
     <div class="gh reveal">
       <div class="gh-top">
         <a href="https://github.com/amiraijaz" target="_blank" rel="noopener">github.com/amiraijaz</a>
