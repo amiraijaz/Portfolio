@@ -48,6 +48,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"></link>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></link>
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/bubble-menu.css">
 <style>
   :root{
     --bg: #06090f;
@@ -121,18 +122,22 @@
 </style>
 </head>
 <body>
-<nav>
-  <a class="logo" href="index.html"><i></i>amir.aijaz</a>
-  <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <div class="nav-links">
-    <a href="index.html#experience">Experience</a>
-    <a href="projects.html" class="active">Projects</a>
-    <a href="index.html#skills">Skills</a>
-    <a href="index.html#credentials">Credentials</a>
-    <a href="docs/amir-aijaz-cv.pdf" target="_blank" rel="noopener">CV ↗</a>
-    <a class="navbtn primary nav-cta" href="index.html#contact">Get in touch</a>
-  </div>
+<nav class="bubble-menu" aria-label="Main navigation">
+  <a class="bubble logo-bubble" href="index.html"><span class="dot"></span>amir.aijaz</a>
+  <button type="button" class="bubble toggle-bubble menu-btn" aria-label="Toggle menu" aria-pressed="false">
+    <span class="menu-line"></span><span class="menu-line"></span>
+  </button>
 </nav>
+<div class="bubble-menu-items" aria-hidden="true">
+  <ul class="pill-list" role="menu" aria-label="Menu links">
+    <li class="pill-col"><a class="pill-link" role="menuitem" href="index.html" style="--item-rot:-6deg"><span class="pill-label">Home</span></a></li>
+    <li class="pill-col"><a class="pill-link" role="menuitem" href="index.html#experience" style="--item-rot:6deg"><span class="pill-label">Experience</span></a></li>
+    <li class="pill-col"><a class="pill-link" role="menuitem" href="index.html#skills" style="--item-rot:-5deg"><span class="pill-label">Skills</span></a></li>
+    <li class="pill-col"><a class="pill-link" role="menuitem" href="index.html#credentials" style="--item-rot:5deg"><span class="pill-label">Credentials</span></a></li>
+    <li class="pill-col"><a class="pill-link" role="menuitem" href="docs/amir-aijaz-cv.pdf" target="_blank" rel="noopener" style="--item-rot:-6deg"><span class="pill-label">CV</span></a></li>
+    <li class="pill-col"><a class="pill-link" role="menuitem" href="index.html#contact" style="--item-rot:6deg"><span class="pill-label">Contact</span></a></li>
+  </ul>
+</div>
 <div class="page">
   <a class="mobile-back" href="index.html">← Back to home</a>
   <div class="head">
@@ -375,6 +380,7 @@
   });
 })();
 </script>
-<script src="assets/site.js" defer></script>
+<script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="assets/bubble-menu.js" defer></script>
 </body>
 </html>
