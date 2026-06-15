@@ -37,7 +37,40 @@ nav .logo i{ animation:navpulse 2s infinite; }
 .navbtn.primary{ background:var(--accent); color:#14110a; border-color:transparent; }
 .navbtn.primary:hover{ box-shadow:0 6px 32px color-mix(in oklab, var(--accent) 45%, transparent); }
 .nav-cta{ padding:9px 20px; font-size:14px; }
-@media (max-width:760px){ .nav-links a:not(.navbtn){ display:none; } }
+
+/* ---------- hamburger menu (mobile) ---------- */
+.nav-burger{ display:none; width:40px; height:40px; flex-direction:column; align-items:center; justify-content:center;
+  gap:5px; border:0; background:transparent; cursor:pointer; padding:0; position:relative; z-index:101; }
+.nav-burger span{ display:block; width:22px; height:2px; border-radius:2px; background:var(--text); transition:transform .3s, opacity .25s; }
+nav.open .nav-burger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+nav.open .nav-burger span:nth-child(2){ opacity:0; }
+nav.open .nav-burger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+body.nav-lock{ overflow:hidden; }
+
+.mobile-back{ display:none; }
+
+@media (max-width:760px){
+  .nav-burger{ display:flex; }
+  /* dropdown panel anchored under the pill (nav is transformed, so a fixed full-screen
+     overlay would mis-anchor — an absolute dropdown is reliable here). */
+  .nav-links{ position:absolute; top:calc(100% + 12px); left:50%;
+    transform:translateX(-50%) scale(.95); transform-origin:top center;
+    flex-direction:column; align-items:stretch; gap:3px; width:min(82vw, 300px); padding:12px;
+    background:color-mix(in oklab, var(--panel) 97%, transparent); border:1px solid var(--line); border-radius:16px;
+    -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px); box-shadow:0 26px 64px -22px rgba(0,0,0,.75);
+    opacity:0; visibility:hidden; transition:opacity .26s ease, transform .26s ease, visibility .26s; }
+  nav.open .nav-links{ opacity:1; visibility:visible; transform:translateX(-50%) scale(1); }
+  .nav-links a{ display:block !important; font-size:16px; font-weight:500; padding:11px 14px; border-radius:10px; text-align:left; }
+  .nav-links a:not(.btn):not(.navbtn){ color:var(--muted); }
+  .nav-links a:not(.btn):not(.navbtn):hover{ color:var(--text); background:color-mix(in oklab, var(--accent) 12%, transparent); }
+  .nav-links a:not(.btn):not(.navbtn)::after{ display:none; }
+  .nav-links .btn, .nav-links .navbtn{ display:block !important; text-align:center; margin-top:7px; font-size:15px !important; padding:13px 20px !important; }
+
+  /* mobile-only back link on inner pages */
+  .mobile-back{ display:inline-flex; align-items:center; gap:8px; font-family:"JetBrains Mono",monospace; font-size:13px;
+    color:var(--muted); text-decoration:none; transition:color .2s; }
+  .mobile-back:hover{ color:var(--accent); }
+}
 
 /* ---------- footer ---------- */
 .site-footer{ border-top:1px solid var(--line); background:var(--bg2,#04070c); margin-top:90px; }
@@ -58,5 +91,5 @@ nav .logo i{ animation:navpulse 2s infinite; }
   .sf-top{ flex-direction:column; align-items:center; text-align:center; gap:24px; }
   .sf-tag{ max-width:none; }
   .sf-links{ justify-content:center; }
-  .foot-meta{ flex-direction:column; align-items:center; text-align:center; gap:8px; }
+  .foot-meta{ flex-direction:column; align-items:center; text-align:center; gap:14px; line-height:1.6; }
 }

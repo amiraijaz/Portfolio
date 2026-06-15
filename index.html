@@ -567,7 +567,7 @@
     .foot-ctas{ justify-content:center; width:100%; }
     .cv-alt{ text-align:center; }
     .contact-card{ align-items:center; text-align:center; margin-top:4px; }
-    .foot-meta{ justify-content:center; text-align:center; }
+    .foot-meta{ flex-direction:column; align-items:center; text-align:center; gap:14px; line-height:1.6; }
   }
 
   /* ---- interactive terminal ---- */
@@ -601,6 +601,7 @@
   .compare-link{ position:fixed; z-index:101; right:18px; bottom:18px; font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:8px 14px; text-decoration:none; }
   .compare-link:hover{ color:var(--text); border-color:var(--accent); }
 </style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body data-motion="on" data-cursor="on">
 <div class="cursor-dot"></div>
@@ -608,6 +609,7 @@
 
 <nav>
   <a class="logo" href="#"><i></i>amir.aijaz</a>
+  <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
@@ -1339,5 +1341,6 @@
   else addEventListener("load", schedule);
 })();
 </script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
