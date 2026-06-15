@@ -152,6 +152,7 @@
 
 <nav>
   <a class="logo" href="../index.html"><i></i>amir.aijaz</a>
+  <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="../index.html#experience">Experience</a>
     <a href="../projects.html" class="active">Projects</a>
@@ -163,7 +164,8 @@
 </nav>
 
 <section class="wrap" style="padding-top:104px;padding-bottom:34px;">
-  <div class="eyebrow">AI Governance · Open Source · MIT</div>
+  <a class="mobile-back" href="../projects.html">← All projects</a>
+  <div class="eyebrow" style="margin-top:18px;">AI Governance · Open Source · MIT</div>
   <h1>Vigil</h1>
   <div class="sub">AI Governance Dashboard</div>
   <p class="lead">An open-source, self-hostable platform that gives teams running LLMs in production the <b>observability, safety scanning and audit trails</b> that enterprises pay $500K+ for. Governance-first by design, with built-in mapping to the <b>NIST AI Risk Management Framework</b> and a one-command Docker deploy.</p>
@@ -362,6 +364,6 @@ PostgreSQL ─▶ React dashboard + PDF reports</code></pre>
   addEventListener('keydown', function(e){ if(e.key==='Escape'){ lb.classList.remove('on'); img.src=''; } });
 })();
 </script>
-<script>(function(){var n=document.querySelector('nav');if(n){var s=function(){n.classList.toggle('scrolled',scrollY>20);};s();addEventListener('scroll',s,{passive:true});}})();</script>
+<script src="../assets/site.js" defer></script>
 </body>
 </html>
