@@ -75,7 +75,8 @@
   .filters{ display:flex; flex-wrap:wrap; gap:10px; margin:42px 0 30px; }
   .chip{
     font-family:"JetBrains Mono",monospace; font-size:13px; padding:9px 18px; border-radius:999px;
-    border:1px solid var(--line); background:transparent; color:var(--muted); cursor:pointer;
+    border:1px solid color-mix(in oklab, var(--text) 18%, var(--line)); background:transparent;
+    color:color-mix(in oklab, var(--text) 80%, var(--muted)); cursor:pointer;
     transition: all .2s;
   }
   .chip b{ color:var(--accent); font-weight:600; margin-left:6px; }
