@@ -135,6 +135,10 @@
     transition: background .45s, border-color .45s, box-shadow .45s, top .45s;
     animation: navIn .9s .15s cubic-bezier(.2,.7,.2,1) both;
   }
+  /* nav.bubble-menu has its own full-width layout (left:0;right:0;transform:none) so the
+     translateX(-50%) in these keyframes must NOT run on it — bubble-menu.css cancels it via
+     animation:none, but we also fix the keyframes in case cascade behaves unexpectedly. */
+  nav.bubble-menu{ animation:none !important; transform:none !important; }
   @keyframes navIn{ from{ opacity:0; transform:translate(-50%,-26px);} to{ opacity:1; transform:translate(-50%,0);} }
   nav.scrolled{
     top:10px;

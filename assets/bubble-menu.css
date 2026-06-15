@@ -3,11 +3,12 @@
    intentionally overrides the previous floating-pill nav. */
 
 nav.bubble-menu{
-  position:fixed; left:0; right:0; top:16px; margin:0; max-width:none; transform:none;
+  position:fixed; left:0; right:0; top:16px; margin:0; max-width:none; transform:none !important;
   display:flex; align-items:center; justify-content:space-between; gap:16px;
   padding:0 clamp(16px,5vw,40px); pointer-events:none; z-index:100;
   background:transparent; border:0; border-radius:0;
-  -webkit-backdrop-filter:none; backdrop-filter:none; animation:none; white-space:nowrap;
+  -webkit-backdrop-filter:none; backdrop-filter:none; animation:none !important; white-space:nowrap;
+  overflow:visible;
 }
 .bubble-menu .bubble{
   --bubble-size:50px; height:var(--bubble-size); border-radius:999px;
@@ -38,7 +39,12 @@ nav.bubble-menu{
 .bubble-menu .pill-btn:hover{ border-color:var(--accent); transform:translateY(-1px); }
 .bubble-menu .pill-btn.primary{ background:var(--accent); color:#14110a; border-color:transparent; }
 .bubble-menu .pill-btn.primary:hover{ box-shadow:0 8px 30px color-mix(in oklab, var(--accent) 45%, transparent); }
-@media (max-width:900px){ .bubble-menu .pill-btn{ display:none; } }
+@media (max-width:900px){
+  .bubble-menu .pill-btn{ display:none; }
+  /* ensure toggle is always visible and bubble-actions never collapses */
+  .bubble-actions{ flex-shrink:0; }
+  .bubble-menu .toggle-bubble{ display:inline-flex !important; visibility:visible !important; opacity:1 !important; }
+}
 
 .bubble-menu-items{
   position:fixed; inset:0; display:none; align-items:center; justify-content:center;
