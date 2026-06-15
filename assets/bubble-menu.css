@@ -22,11 +22,23 @@ nav.bubble-menu{
 .bubble-menu .logo-bubble .dot{ width:9px; height:9px; border-radius:50%; background:var(--accent);
   box-shadow:0 0 12px var(--accent); animation:bm-pulse 2s infinite; }
 @keyframes bm-pulse{ 0%,100%{ box-shadow:0 0 0 0 color-mix(in oklab, var(--accent) 60%, transparent);} 60%{ box-shadow:0 0 0 8px transparent;} }
-.bubble-menu .toggle-bubble{ width:var(--bubble-size); cursor:pointer; flex-direction:column; gap:6px; }
+.bubble-menu .toggle-bubble{ width:var(--bubble-size); min-width:var(--bubble-size); flex:0 0 auto;
+  cursor:pointer; flex-direction:column; gap:6px; }
 .bubble-menu .menu-line{ width:22px; height:2px; border-radius:2px; background:var(--text);
   transition:transform .3s ease, opacity .3s ease; }
 .bubble-menu .menu-btn.open .menu-line:first-child{ transform:translateY(4px) rotate(45deg); }
 .bubble-menu .menu-btn.open .menu-line:last-child{ transform:translateY(-4px) rotate(-45deg); }
+
+/* right-hand action group: desktop buttons + toggle */
+.bubble-actions{ display:flex; align-items:center; gap:12px; pointer-events:auto; }
+.bubble-menu .pill-btn{ height:50px; padding:0 22px; border-radius:999px; font-weight:600; font-size:14.5px;
+  background:var(--panel); border:1px solid var(--line); color:var(--text); text-decoration:none;
+  display:inline-flex; align-items:center; gap:7px; white-space:nowrap; box-shadow:0 10px 30px -12px rgba(0,0,0,.7);
+  transition:border-color .2s, transform .15s, box-shadow .2s; }
+.bubble-menu .pill-btn:hover{ border-color:var(--accent); transform:translateY(-1px); }
+.bubble-menu .pill-btn.primary{ background:var(--accent); color:#14110a; border-color:transparent; }
+.bubble-menu .pill-btn.primary:hover{ box-shadow:0 8px 30px color-mix(in oklab, var(--accent) 45%, transparent); }
+@media (max-width:900px){ .bubble-menu .pill-btn{ display:none; } }
 
 .bubble-menu-items{
   position:fixed; inset:0; display:none; align-items:center; justify-content:center;

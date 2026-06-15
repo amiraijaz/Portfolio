@@ -17,7 +17,11 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
     },
     {
-      "source": "/assets/(.*)",
+      "source": "/assets/(.*)\\.(css|js)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    },
+    {
+      "source": "/assets/(.*)\\.(webp|png|jpg|jpeg|svg|lottie|woff2|woff)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }]
     },
     {
