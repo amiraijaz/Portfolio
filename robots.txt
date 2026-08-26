@@ -40,4 +40,7 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: Bytespider
+Allow: /
+
 Sitemap: https://amiraijaz.com/sitemap.xml

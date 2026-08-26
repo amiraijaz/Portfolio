@@ -1,0 +1,108 @@
+# Amir Aijaz
+
+> Full profile for AI answer engines and crawlers. Short index: https://amiraijaz.com/llms.txt
+
+## About
+
+Amir Aijaz is an AI engineer from Karachi, Pakistan, and co-founder of Codexyo, an AI engineering studio that builds production AI systems for businesses in North America, Europe and the Gulf. He holds a BS in Computer Science from the University of Karachi (2024). Previously he was an AI Engineer at Viral Tech in Norway, where he built a multi-tenant agentic commerce chatbot engine, and he interned at the Smart City Lab of the National Centre of Artificial Intelligence at NED University, working on Urdu speech recognition and an Arabic voice assistant. His work covers large language model applications, retrieval-augmented generation, voice agents, computer vision and AI governance. He is the author of aigovkit, a Python SDK for AI governance and LLM observability published on PyPI, and governance-bench-v1, a public benchmark dataset on Hugging Face. He also serves as fractional CTO for HAYA Trading Inc., a Canadian e-commerce company.
+
+- Name: Amir Aijaz
+- Title: Co-founder & AI Engineer, Codexyo; Fractional CTO, HAYA Trading Inc. (Canada)
+- Location: Karachi, Pakistan. Available for remote work worldwide.
+- Email: amirejaz790@gmail.com
+
+## Experience
+
+### Co-founder & AI Engineer, Codexyo
+June 2026 to present. Remote, global clients. https://codexyo.com/
+
+Co-founder of Codexyo, an AI engineering studio, leading engineering and delivery. Builds production AI systems for small and mid-sized businesses: legal-operations automation, voice agents for lead qualification, project-management platforms, inventory and forecasting tools, and quantitative analysis systems. Owns architecture, cost budgets, testing and production launches end to end.
+
+Focus: voice agents (Vapi), multi-tenant SaaS, RAG, FastAPI, Next.js, automation.
+
+### Fractional CTO, HAYA Trading Inc.
+July 2026 to present. Canada. Remote, part-time, contract. https://hayalegacy.com/
+
+Owns the digital business for HAYA Legacy, a Canada-wide e-commerce brand: Shopify build and integrations, growth and marketing automation, analytics, and AI-assisted merchandising and customer-support tooling.
+
+Focus: Shopify, e-commerce, Next.js, AI tooling, technical leadership.
+
+### AI Engineer, Viral Tech
+August 2025 to June 2026. Norway. Remote, full-time.
+
+Built a production multi-tenant agentic commerce engine with Postgres row-level-security isolation, a WooCommerce adapter, a PII firewall and an owner dashboard, validated on a live 300+ product store. Added semantic retrieval with BGE-M3 embeddings on GPU and a cost-optimized LLM routing layer to keep per-conversation cost low at scale. Also built Knowlyst, a RAG system over web and video links, and benchmarked emerging LLMs on capability, latency and cost.
+
+Focus: multi-tenant architecture and RLS, BGE-M3, LLM routing, PII firewall, RAG.
+
+### AI Engineer, TechThrone Innovations
+May 2025 to July 2025. Karachi, Pakistan.
+
+Built a self-hosted local LLM assistant for content and social media management; shipped text-to-image tools, automated HR screening and lead-generation agents; analyzed geospatial datasets for enterprise clients including CBL and EBM.
+
+Focus: local LLMs, agents, text-to-image, data analysis.
+
+### Junior AI Engineer, CodeNexo
+January 2025 to April 2025. Karachi, Pakistan.
+
+Built AI newsletter and blog generation tools with the Claude API, Flask and the YouTube Data API; automated team workflows and deployed scalable applications on AWS.
+
+Focus: Claude API, Flask, AWS, prompt engineering.
+
+### Computer Vision Intern, The Disrupt Labs
+June 2024 to October 2024. Karachi, Pakistan.
+
+Developed Python scripts measuring 2D object distances in warehouse environments and applied open-source depth-estimation models to real-time CCTV feeds.
+
+Focus: depth estimation, OpenCV, Python.
+
+### AI Research Intern, Smart City Lab, NCAI
+December 2023 to May 2024. NED University, Karachi, Pakistan.
+
+Built an Arabic-language medical voice assistant for Sahl AI, covering dataset preparation, fine-tuning and integration, and ran comparative analysis of Wav2Vec against Google Speech for Urdu speech-to-text.
+
+Focus: speech models, fine-tuning, Hugging Face, PyTorch.
+
+## Education
+
+BS Computer Science, University of Karachi. January 2021 to December 2024.
+Final year project: SignVision, a real-time Urdu sign-language recognition system. Coursework in AI, NLP, statistics and data mining.
+
+Certifications: AI on Microsoft Azure (Microsoft, Coursera); Python for Data Science, AI & Development (IBM, Coursera); Introduction to AI with Python (NCAI and CERD Academy, NED University).
+
+## Open source and published artifacts
+
+- Vigil: open-source AI governance and LLM observability dashboard. Model registry with risk classification, audit logging, automated PII and toxicity detection, cost tracking across 250+ models, and one-click NIST AI RMF compliance reports. Built with FastAPI, React, PostgreSQL, Redis and Docker. Case study: https://amiraijaz.com/projects/vigil.html
+- aigovkit: Python SDK for AI governance and LLM observability, providing a model registry, audit logging, detection hooks and compliance reporting. Published on PyPI. https://pypi.org/project/aigovkit/
+- governance-bench-v1: 200-case benchmark dataset for evaluating AI governance scanners across PII, toxicity and policy-violation cases. CC-BY-4.0 on Hugging Face. https://huggingface.co/datasets/Vigil-ai/governance-bench-v1
+
+## Featured projects
+
+- Vigil: AI Governance Dashboard. LLM observability and safety platform with model registry, risk classification, full audit logging, automated PII and toxicity detection, and one-click NIST AI RMF compliance reports. FastAPI, React, PostgreSQL, Redis, Docker. https://amiraijaz.com/projects/vigil.html
+- AI Voice Calling Agent. Production outbound and inbound voice agent for automated phone qualification and warm transfer. Multi-tenant, TCPA-compliant, backed by 586 hermetic tests with a concurrency-safe dispatcher. Vapi, FastAPI, Celery, telephony. Private client build.
+- Legal Mind AI. RAG assistant that lets legal teams query large PDFs in natural language with cited answers. Supports Gemini, OpenAI and local Ollama backends. LangChain, ChromaDB, FastAPI. https://legal-mind-ai-assistant.vercel.app/
+- Quant Strategy Validation Engine. Offline backtesting harness validating trading strategies over roughly 9 years of BTC, ETH and SOL data, net of realistic fees and slippage, with strict no-look-ahead discipline and a go/no-go report. Python, Pandas, risk metrics. Private client build.
+- AI Medical Chatbot. Multimodal medical assistant that analyzes medical images, answers health questions and supports voice interaction. LLaMA 3, OpenAI API, computer vision, speech, Flask. https://github.com/amiraijaz/Medical-Chatbot
+- Instagram Agent. CrewAI multi-agent system that researches the market, plans content, generates visuals and writes captions to automate Instagram content end to end. CrewAI, LangChain, Serper API, Python. https://github.com/amiraijaz/Insta-Agent
+
+Full index of 20 builds: https://amiraijaz.com/projects.html
+
+## Skills
+
+- LLMs and agents: LangChain, LangGraph, RAG, CrewAI, Model Context Protocol (MCP), Vapi, ElevenLabs, vector databases (Chroma, Pinecone, Qdrant), OpenAI / Anthropic / Gemini APIs, prompt engineering
+- Machine learning and NLP: PyTorch, TensorFlow, Hugging Face, scikit-learn, transformers, sentence-transformers, spaCy, BGE-M3 embeddings
+- Computer vision: YOLOv8, OpenCV, MediaPipe, image segmentation, Tesseract OCR
+- Full-stack and cloud: FastAPI, Celery, React / Next.js, PostgreSQL, Redis, multi-tenancy and RLS, Docker, AWS, Pytest and CI/CD, n8n
+
+## Contact and links
+
+- Portfolio: https://amiraijaz.com/
+- Projects: https://amiraijaz.com/projects.html
+- Email: amirejaz790@gmail.com
+- Phone: +92 323 3232974
+- LinkedIn: https://www.linkedin.com/in/amiraijaz
+- GitHub: https://github.com/amiraijaz
+- Codexyo: https://codexyo.com/
+- HAYA Legacy: https://hayalegacy.com/
+- PyPI (aigovkit): https://pypi.org/project/aigovkit/
+- Hugging Face: https://huggingface.co/Vigil-ai
+- CV: https://amiraijaz.com/docs/amir-aijaz-cv.pdf
