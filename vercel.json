@@ -7,7 +7,7 @@
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "portfolio-amiraijaz.vercel.app" }],
-      "destination": "https://amiraijaz.com/:path*",
+      "destination": "https://www.amiraijaz.com/:path*",
       "permanent": true
     }
   ],

@@ -43,4 +43,4 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: https://amiraijaz.com/sitemap.xml
+Sitemap: https://www.amiraijaz.com/sitemap.xml

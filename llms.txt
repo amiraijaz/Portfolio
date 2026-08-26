@@ -21,9 +21,9 @@
 - Quant Strategy Validation Engine - offline backtesting harness with no-look-ahead enforcement, realistic fee/slippage modeling, and out-of-sample validation.
 
 ## Links
-- Portfolio: https://amiraijaz.com/
-- Full profile: https://amiraijaz.com/llms-full.txt
-- Projects: https://amiraijaz.com/projects.html
+- Portfolio: https://www.amiraijaz.com/
+- Full profile: https://www.amiraijaz.com/llms-full.txt
+- Projects: https://www.amiraijaz.com/projects.html
 - GitHub: https://github.com/amiraijaz
 - LinkedIn: https://www.linkedin.com/in/amiraijaz
 - Codexyo: https://codexyo.com/
