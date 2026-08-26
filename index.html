@@ -530,14 +530,34 @@
   @media (max-width:920px){ .cred-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:640px){ .cred-grid{ grid-template-columns:1fr; } .cred{ width:100%; } }
 
-  /* ---------- about: headshot beside the prose ---------- */
-  #about .cred{ flex-direction:row; align-items:flex-start; gap:28px; }
-  #about .about-photo{ flex:0 0 320px; margin:0; }
-  #about .about-photo img{ width:100%; height:auto; display:block; border-radius:var(--radius); }
-  #about .about-photo figcaption{ font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--muted); margin-top:10px; }
+  /* ---------- about ---------- */
+  #about .cred{ display:grid; grid-template-columns:280px 1fr; gap:28px; align-items:start; }
+  #about .about-photo{ margin:0; width:280px; }
+  #about .about-photo img{
+    width:100%; height:auto; display:block;
+    border:1px solid var(--line); border-radius:20px;
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, box-shadow .35s;
+  }
+  #about .about-photo img:hover{
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab, var(--accent) 28%, var(--line));
+    box-shadow: 0 30px 60px -30px rgb(0 0 0 / .85), 0 0 44px -18px color-mix(in oklab, var(--accent) 45%, transparent);
+  }
+  body[data-motion="off"] #about .about-photo img:hover{ transform:none; }
+  #about .about-photo figcaption{
+    margin-top:14px; display:flex; flex-direction:column; gap:5px;
+    font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  }
+  #about .about-photo .cap-name{ color:var(--accent); }
+  #about .about-photo .cap-role{ color:var(--muted); line-height:1.6; }
+  #about .about-body{ display:flex; flex-direction:column; gap:14px; min-width:0; }
+  #about .about-body p{ color:var(--muted); font-size:15.5px; max-width:760px; }
+  #about .about-body .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
   @media (max-width:700px){
-    #about .cred{ flex-direction:column; }
-    #about .about-photo{ flex:0 0 auto; max-width:60vw; }
+    #about .cred{ grid-template-columns:1fr; gap:24px; justify-items:center; }
+    #about .about-photo{ width:220px; }
+    #about .about-photo figcaption{ align-items:center; text-align:center; }
+    #about .about-body{ width:100%; }
   }
 
   /* ---------- workflow ---------- */
@@ -943,9 +963,15 @@
              alt="Amir Aijaz, AI engineer and co-founder of Codexyo"
              title="Amir Aijaz"
              loading="eager" decoding="async">
-        <figcaption>Amir Aijaz, AI Engineer and Co-founder of Codexyo, Karachi</figcaption>
+        <figcaption><span class="cap-name">Amir Aijaz</span><span class="cap-role">AI Engineer · Co-founder, Codexyo · Karachi</span></figcaption>
       </figure>
-      <p class="desc">Amir Aijaz is an AI engineer from Karachi, Pakistan, and co-founder of <a href="https://codexyo.com" target="_blank" rel="noopener">Codexyo</a>, an AI engineering studio that builds production AI systems for businesses in North America, Europe and the Gulf. He holds a BS in Computer Science from the University of Karachi (2024). Previously he was an AI Engineer at Viral Tech in Norway, where he built a multi-tenant agentic commerce chatbot engine, and he interned at the Smart City Lab of the National Centre of Artificial Intelligence at NED University, working on Urdu speech recognition and an Arabic voice assistant. His work covers large language model applications, retrieval-augmented generation, voice agents, computer vision and AI governance. He is the author of <a href="https://pypi.org/project/aigovkit/" target="_blank" rel="noopener">aigovkit</a>, a Python SDK for AI governance and LLM observability published on PyPI, and <a href="https://huggingface.co/datasets/Vigil-ai/governance-bench-v1" target="_blank" rel="noopener">governance-bench-v1</a>, a public benchmark dataset on Hugging Face. He also serves as fractional CTO for <a href="https://hayalegacy.com" target="_blank" rel="noopener">HAYA Trading Inc.</a>, a Canadian e-commerce company.</p>
+      <div class="about-body">
+        <div class="k">PROFILE</div>
+        <p>Amir Aijaz is an AI engineer from Karachi, Pakistan, and co-founder of <a href="https://codexyo.com" target="_blank" rel="noopener">Codexyo</a>, an AI engineering studio that builds production AI systems for businesses in North America, Europe and the Gulf. He holds a BS in Computer Science from the University of Karachi (2024).</p>
+        <p>Previously he was an AI Engineer at Viral Tech in Norway, where he built a multi-tenant agentic commerce chatbot engine, and he interned at the Smart City Lab of the National Centre of Artificial Intelligence at NED University, working on Urdu speech recognition and an Arabic voice assistant. His work covers large language model applications, retrieval-augmented generation, voice agents, computer vision and AI governance. He is the author of <a href="https://pypi.org/project/aigovkit/" target="_blank" rel="noopener">aigovkit</a>, a Python SDK for AI governance and LLM observability published on PyPI, and <a href="https://huggingface.co/datasets/Vigil-ai/governance-bench-v1" target="_blank" rel="noopener">governance-bench-v1</a>, a public benchmark dataset on Hugging Face.</p>
+        <p>He also serves as fractional CTO for <a href="https://hayalegacy.com" target="_blank" rel="noopener">HAYA Trading Inc.</a>, a Canadian e-commerce company.</p>
+        <div class="tags"><span class="tag">Karachi, Pakistan</span><span class="tag">BS Computer Science, University of Karachi</span><span class="tag">Co-founder, Codexyo</span><span class="tag">Fractional CTO, HAYA Trading</span><span class="tag">aigovkit on PyPI</span><span class="tag">governance-bench-v1 on Hugging Face</span></div>
+      </div>
     </div>
   </div>
 </section>
