@@ -1,6 +1,6 @@
 # Amir Aijaz
 
-> Full profile for AI answer engines and crawlers. Short index: https://amiraijaz.com/llms.txt
+> Full profile for AI answer engines and crawlers. Short index: https://www.amiraijaz.com/llms.txt
 
 ## About
 
@@ -71,20 +71,20 @@ Certifications: AI on Microsoft Azure (Microsoft, Coursera); Python for Data Sci
 
 ## Open source and published artifacts
 
-- Vigil: open-source AI governance and LLM observability dashboard. Model registry with risk classification, audit logging, automated PII and toxicity detection, cost tracking across 250+ models, and one-click NIST AI RMF compliance reports. Built with FastAPI, React, PostgreSQL, Redis and Docker. Case study: https://amiraijaz.com/projects/vigil.html
+- Vigil: open-source AI governance and LLM observability dashboard. Model registry with risk classification, audit logging, automated PII and toxicity detection, cost tracking across 250+ models, and one-click NIST AI RMF compliance reports. Built with FastAPI, React, PostgreSQL, Redis and Docker. Case study: https://www.amiraijaz.com/projects/vigil.html
 - aigovkit: Python SDK for AI governance and LLM observability, providing a model registry, audit logging, detection hooks and compliance reporting. Published on PyPI. https://pypi.org/project/aigovkit/
 - governance-bench-v1: 200-case benchmark dataset for evaluating AI governance scanners across PII, toxicity and policy-violation cases. CC-BY-4.0 on Hugging Face. https://huggingface.co/datasets/Vigil-ai/governance-bench-v1
 
 ## Featured projects
 
-- Vigil: AI Governance Dashboard. LLM observability and safety platform with model registry, risk classification, full audit logging, automated PII and toxicity detection, and one-click NIST AI RMF compliance reports. FastAPI, React, PostgreSQL, Redis, Docker. https://amiraijaz.com/projects/vigil.html
+- Vigil: AI Governance Dashboard. LLM observability and safety platform with model registry, risk classification, full audit logging, automated PII and toxicity detection, and one-click NIST AI RMF compliance reports. FastAPI, React, PostgreSQL, Redis, Docker. https://www.amiraijaz.com/projects/vigil.html
 - AI Voice Calling Agent. Production outbound and inbound voice agent for automated phone qualification and warm transfer. Multi-tenant, TCPA-compliant, backed by 586 hermetic tests with a concurrency-safe dispatcher. Vapi, FastAPI, Celery, telephony. Private client build.
 - Legal Mind AI. RAG assistant that lets legal teams query large PDFs in natural language with cited answers. Supports Gemini, OpenAI and local Ollama backends. LangChain, ChromaDB, FastAPI. https://legal-mind-ai-assistant.vercel.app/
 - Quant Strategy Validation Engine. Offline backtesting harness validating trading strategies over roughly 9 years of BTC, ETH and SOL data, net of realistic fees and slippage, with strict no-look-ahead discipline and a go/no-go report. Python, Pandas, risk metrics. Private client build.
 - AI Medical Chatbot. Multimodal medical assistant that analyzes medical images, answers health questions and supports voice interaction. LLaMA 3, OpenAI API, computer vision, speech, Flask. https://github.com/amiraijaz/Medical-Chatbot
 - Instagram Agent. CrewAI multi-agent system that researches the market, plans content, generates visuals and writes captions to automate Instagram content end to end. CrewAI, LangChain, Serper API, Python. https://github.com/amiraijaz/Insta-Agent
 
-Full index of 20 builds: https://amiraijaz.com/projects.html
+Full index of 20 builds: https://www.amiraijaz.com/projects.html
 
 ## Skills
 
@@ -95,8 +95,8 @@ Full index of 20 builds: https://amiraijaz.com/projects.html
 
 ## Contact and links
 
-- Portfolio: https://amiraijaz.com/
-- Projects: https://amiraijaz.com/projects.html
+- Portfolio: https://www.amiraijaz.com/
+- Projects: https://www.amiraijaz.com/projects.html
 - Email: amirejaz790@gmail.com
 - Phone: +92 323 3232974
 - LinkedIn: https://www.linkedin.com/in/amiraijaz
@@ -105,4 +105,4 @@ Full index of 20 builds: https://amiraijaz.com/projects.html
 - HAYA Legacy: https://hayalegacy.com/
 - PyPI (aigovkit): https://pypi.org/project/aigovkit/
 - Hugging Face: https://huggingface.co/Vigil-ai
-- CV: https://amiraijaz.com/docs/amir-aijaz-cv.pdf
+- CV: https://www.amiraijaz.com/docs/amir-aijaz-cv.pdf

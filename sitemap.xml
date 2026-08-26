@@ -1,31 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://amiraijaz.com/</loc>
+    <loc>https://www.amiraijaz.com/</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.amiraijaz.com/images/amir-aijaz.jpg</image:loc>
+      <image:title>Amir Aijaz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.amiraijaz.com/images/Vigil/dashboard.webp</image:loc>
+      <image:title>Vigil: AI Governance Dashboard by Amir Aijaz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.amiraijaz.com/images/AI%20Calling%20Agent/AI%20Voice%20calling.webp</image:loc>
+      <image:title>AI Voice Calling Agent by Amir Aijaz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.amiraijaz.com/images/Legal%20Mind/Legal%20Mind%20AI.webp</image:loc>
+      <image:title>Legal Mind AI by Amir Aijaz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.amiraijaz.com/images/Quant%20Strategy%20Validation%20Engine/Quant%20Strategy%20Validation%20Engine.webp</image:loc>
+      <image:title>Quant Strategy Validation Engine by Amir Aijaz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.amiraijaz.com/images/Medical%20Chatbot/ai-doctor.webp</image:loc>
+      <image:title>AI Medical Chatbot by Amir Aijaz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.amiraijaz.com/images/Insta%20Agent/Instagent.webp</image:loc>
+      <image:title>Instagram Agent by Amir Aijaz</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://amiraijaz.com/projects.html</loc>
+    <loc>https://www.amiraijaz.com/projects.html</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amiraijaz.com/projects/vigil.html</loc>
+    <loc>https://www.amiraijaz.com/projects/vigil.html</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://amiraijaz.com/llms.txt</loc>
+    <loc>https://www.amiraijaz.com/llms.txt</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://amiraijaz.com/llms-full.txt</loc>
+    <loc>https://www.amiraijaz.com/llms-full.txt</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
