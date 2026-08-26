@@ -4,8 +4,9 @@
 
 ## About
 - Name: Amir Aijaz
-- Title: AI Engineer
-- Current role: AI Engineer at Viral Tech (Norway, remote), since August 2025
+- Title: Co-founder & AI Engineer, Codexyo; Fractional CTO, HAYA Trading Inc. (Canada)
+- Current roles: Co-founder & AI Engineer at Codexyo (AI engineering studio, remote, since June 2026); Fractional CTO (contract, part-time) at HAYA Trading Inc., Canada (since July 2026), building hayalegacy.com
+- Previous: AI Engineer at Viral Tech (Norway, remote), August 2025 to June 2026; AI Engineer at TechThrone Innovations (2025); Junior AI Engineer at CodeNexo (2025)
 - Education: BSc Computer Science, University of Karachi (2021–2024)
 - Core skills: LLMs, RAG, LangChain/LangGraph, multi-agent systems, Model Context Protocol (MCP), Vapi voice agents, PyTorch, Hugging Face, YOLOv8, computer vision, FastAPI, React/Next.js, PostgreSQL, Redis, Docker, AWS, multi-tenant architecture, test-driven development
 - Contact: amirejaz790@gmail.com
@@ -23,6 +24,8 @@
 - Portfolio: https://amiraijaz.com/
 - Projects: https://amiraijaz.com/projects.html
 - GitHub: https://github.com/amiraijaz
-- LinkedIn: https://www.linkedin.com/in/amir-aijaz-01a134233
+- LinkedIn: https://www.linkedin.com/in/amiraijaz
+- Codexyo: https://codexyo.com/
+- HAYA Legacy: https://hayalegacy.com/
 - PyPI (aigovkit): https://pypi.org/project/aigovkit/
 - Hugging Face: https://huggingface.co/Vigil-ai
