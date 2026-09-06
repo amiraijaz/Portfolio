@@ -342,7 +342,7 @@
   .sec-head .idx{ font-family:"JetBrains Mono",monospace; font-size:14px; color:var(--accent); }
   .sec-head h2{ font-size: clamp(32px,4.6vw,54px); font-weight:700; letter-spacing:-.02em; }
   .sec-head .rule{ flex:1; height:1px; background:var(--line); align-self:center; }
-  .sec-count{ font-family:"JetBrains Mono",monospace; font-size:13px; letter-spacing:.05em; white-space:nowrap;
+  .sec-count{ font-family:"JetBrains Mono",monospace; font-size:13px; letter-spacing:.05em; white-space:nowrap; text-decoration:none;
     color:var(--accent); border:1px solid color-mix(in oklab, var(--accent) 35%, transparent);
     background:color-mix(in oklab, var(--accent) 8%, transparent); padding:5px 12px; border-radius:999px; align-self:center; }
 
@@ -1129,7 +1129,7 @@
 
 <section id="projects" data-screen-label="Projects">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="idx">04</span><h2>Featured Projects</h2><span class="rule"></span><span class="sec-count">20+ builds</span></div>
+    <div class="sec-head reveal"><span class="idx">04</span><h2>Featured Projects</h2><span class="rule"></span><a class="sec-count" href="projects.html">20+ builds</a></div>
     <div class="proj-grid reveal">
       <a class="card feature" href="projects/vigil.html">
         <div class="card-thumb"><img src="images/Vigil/dashboard.webp" alt="Vigil AI governance dashboard showing the model registry and risk classification view" loading="lazy" onerror="this.closest('.card-thumb').remove()" width="1600" height="1051"></div>
