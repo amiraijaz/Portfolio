@@ -675,10 +675,6 @@
   .contact-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(210px,290px);
     gap:clamp(28px,5vw,72px); align-items:start; }
   .contact-main .sub{ max-width:520px; margin:4px 0 30px; }
-  .cv-alt{ display:inline-block; margin-top:16px; font-family:"JetBrains Mono",monospace;
-    font-size:12.5px; color:var(--muted); text-decoration:none;
-    border-bottom:1px dashed color-mix(in oklab, var(--muted) 50%, transparent); padding-bottom:1px; }
-  .cv-alt:hover{ color:var(--accent); border-color:var(--accent); }
   .contact-card{ display:flex; flex-direction:column; align-items:flex-end; text-align:right; gap:12px; }
   .foot-avatar{ position:relative; width:108px; height:108px; margin-bottom:2px; }
   .foot-avatar img{ width:100%; height:100%; border-radius:50%; object-fit:cover;
@@ -693,7 +689,6 @@
     .contact-main{ display:flex; flex-direction:column; align-items:center; }
     .contact-main .sub{ text-align:center; }
     .foot-ctas{ justify-content:center; width:100%; }
-    .cv-alt{ text-align:center; }
     .contact-card{ align-items:center; text-align:center; margin-top:4px; }
     .foot-meta{ flex-direction:column; align-items:center; text-align:center; gap:14px; line-height:1.6; }
   }
@@ -1309,7 +1304,6 @@
           <a class="btn magnetic" href="https://www.linkedin.com/in/amiraijaz" target="_blank" rel="noopener">LinkedIn ↗</a>
           <a class="btn magnetic" href="https://github.com/amiraijaz" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
-        <a class="cv-alt" href="docs/amir-aijaz-cv-europass.pdf" target="_blank" rel="noopener">Need the EU / Europass format? ↗</a>
       </div>
 
       <aside class="contact-card reveal">
@@ -1658,7 +1652,7 @@
     hire: function(){ return "status: <span style='color:var(--accent)'>● available</span> - open to freelance AI builds, fractional engineering + research collaborations.\nfastest: <a href='mailto:amirejaz790@gmail.com'>amirejaz790@gmail.com</a> (usually replies within a few hours)."; },
     stack: function(){ return "LLMs/Agents · RAG · LangChain · CrewAI · Vapi\nPyTorch · TensorFlow · Hugging Face · YOLOv8 · OpenCV\nFastAPI · React/Next · PostgreSQL · Redis · Docker · AWS · n8n"; },
     projects: function(){ return "Vigil — AI governance dashboard (PyPI SDK, 250+ models)\nLegal Mind AI — RAG over legal PDFs\nAI Voice Calling Agent — Vapi, high call volume\nSignVision — real-time Urdu sign-language translator\nFog Removal for AVs — dehazing + YOLOv8\n\n→ scroll up to the Projects section for details."; },
-    resume: function(){ return "→ standard:  <a href='docs/amir-aijaz-cv.pdf' target='_blank' rel='noopener'>CV - Amir Aijaz.pdf</a>\n→ EU format: run <span style='color:var(--accent)'>resume --eu</span> for the Europass version"; },
+    resume: function(){ return "→ <a href='docs/amir-aijaz-cv.pdf' target='_blank' rel='noopener'>CV - Amir Aijaz.pdf</a>"; },
     contact: function(){ return "email     <a href='mailto:amirejaz790@gmail.com'>amirejaz790@gmail.com</a>\nlinkedin  <a href='https://www.linkedin.com/in/amiraijaz' target='_blank' rel='noopener'>/in/amiraijaz</a>\ngithub    <a href='https://github.com/amiraijaz' target='_blank' rel='noopener'>/amiraijaz</a>\ncodexyo   <a href='https://codexyo.com' target='_blank' rel='noopener'>codexyo.com</a>\nphone     <a href='tel:+923233232974'>+92 323 3232974</a>"; },
     ai: function(){ return "🤖 a chat version of me (Claude + RAG over my work) is in the works.\nfor now, a real human reads every message → <a href='mailto:amirejaz790@gmail.com'>amirejaz790@gmail.com</a>"; },
     clear: function(){ body.innerHTML = ''; return null; }
@@ -1669,7 +1663,6 @@
     if (!cmd) return;
     echo(raw.trim());
     if (cmd === 'sudo hire' || cmd === 'sudo'){ out("permission granted 😏  let's talk → <a href='mailto:amirejaz790@gmail.com'>amirejaz790@gmail.com</a>"); return; }
-    if (cmd === 'resume --eu' || cmd === 'resume eu' || cmd === 'resume europass'){ out("→ EU/Europass: <a href='docs/amir-aijaz-cv-europass.pdf' target='_blank' rel='noopener'>Europass CV - Amir Aijaz.pdf</a>"); return; }
     if (cmd === 'ls') cmd = 'projects';
     var fn = COMMANDS[cmd];
     if (fn){ var r = fn(); if (r != null) out(r); }
