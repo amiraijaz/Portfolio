@@ -4,10 +4,10 @@
 
 ## About
 
-Amir Aijaz is an AI engineer from Karachi, Pakistan, and co-founder of Codexyo, an AI engineering studio that builds production AI systems for businesses in North America, Europe and the Gulf. He holds a BS in Computer Science from the University of Karachi (2024). Previously he was an AI Engineer at Viral Tech in Norway, where he built a multi-tenant agentic commerce chatbot engine, and he interned at the Smart City Lab of the National Centre of Artificial Intelligence at NED University, working on Urdu speech recognition and an Arabic voice assistant. His work covers large language model applications, retrieval-augmented generation, voice agents, computer vision and AI governance. He is the author of aigovkit, a Python SDK for AI governance and LLM observability published on PyPI, and governance-bench-v1, a public benchmark dataset on Hugging Face. He also serves as fractional CTO for HAYA Trading Inc., a Canadian e-commerce company.
+Amir Aijaz is an AI engineer from Karachi, Pakistan, and co-founder of Codexyo, an AI engineering studio that builds production AI systems for businesses in North America, Europe and the Gulf. He holds a BS in Computer Science from the University of Karachi (2024). Previously he was an AI Engineer at Viral Tech in Norway, where he built a multi-tenant agentic commerce chatbot engine, and he interned at the Smart City Lab of the National Centre of Artificial Intelligence at NED University, working on Urdu speech recognition and an Arabic voice assistant. His work covers large language model applications, retrieval-augmented generation, voice agents, computer vision and AI governance. He is the author of aigovkit, a Python SDK for AI governance and LLM observability published on PyPI, and governance-bench-v1, a public benchmark dataset on Hugging Face. From July to September 2026 he was also fractional CTO for HAYA Trading Inc., a Canadian e-commerce company.
 
 - Name: Amir Aijaz
-- Title: Co-founder & AI Engineer, Codexyo; Fractional CTO, HAYA Trading Inc. (Canada)
+- Title: Co-founder & AI Engineer, Codexyo
 - Location: Karachi, Pakistan. Available for remote work worldwide.
 - Email: amirejaz790@gmail.com
 
@@ -21,9 +21,9 @@ Co-founder of Codexyo, an AI engineering studio, leading engineering and deliver
 Focus: voice agents (Vapi), multi-tenant SaaS, RAG, FastAPI, Next.js, automation.
 
 ### Fractional CTO, HAYA Trading Inc.
-July 2026 to present. Canada. Remote, part-time, contract. https://hayalegacy.com/
+July 2026 to September 2026. Canada. Remote, part-time, contract. https://hayalegacy.com/
 
-Owns the digital business for HAYA Legacy, a Canada-wide e-commerce brand: Shopify build and integrations, growth and marketing automation, analytics, and AI-assisted merchandising and customer-support tooling.
+Owned the digital business for HAYA Legacy, a Canada-wide e-commerce brand: Shopify build and integrations, growth and marketing automation, analytics, and AI-assisted merchandising and customer-support tooling.
 
 Focus: Shopify, e-commerce, Next.js, AI tooling, technical leadership.
 
