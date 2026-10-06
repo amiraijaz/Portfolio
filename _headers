@@ -4,11 +4,12 @@
   Cache-Control: public, max-age=0, must-revalidate
 /
   Cache-Control: public, max-age=0, must-revalidate
+# CV is replaced in place at the same URL: revalidate so updates show immediately.
+/docs/*
+  Cache-Control: public, max-age=0, must-revalidate
 
 # Stable assets: cache hard for 30 days.
 /assets/*
-  Cache-Control: public, max-age=2592000
-/docs/*
   Cache-Control: public, max-age=2592000
 /og-image.png
   Cache-Control: public, max-age=2592000
